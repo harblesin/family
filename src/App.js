@@ -1,24 +1,16 @@
 import React from 'react';
-import logo from './logo.svg';
+import logo from './Images/homepagelogo.png';
 import './App.css';
+import HomePage from "./Components/HomePage";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h4>Welcome You Stupid Cunt</h4>
       </header>
+      <HomePage />
     </div>
   );
 }
