@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./HomePage.css";
 import axios from 'axios';
+import Dashboard from "./Dashboard";
 
 class HomePage extends Component {
 	state = {
@@ -18,8 +19,8 @@ class HomePage extends Component {
 
 	render = () => {
 		return <div id="homepage-body">
-				<h4> Welcome to the Bot Control Panel!</h4>
-				<table>
+				<Dashboard />
+				{/* <table>
 					<thead>
 						<tr>
 							<th>Artist</th>
@@ -40,7 +41,7 @@ class HomePage extends Component {
 						))}
 
 					</tbody>
-				</table>
+				</table> */}
 		</div>
 	}
 
