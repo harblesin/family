@@ -27,9 +27,9 @@ app.use(express.static(path.join(__dirname, "../build")));
 // const musicRouter = require("./Routes/music");
 
 
-// app.get('/', (req, res) => {
-// 	res.sendFile(path.join(__dirname, "../build/index.html"));
-// });
+app.get('/', (req, res) => {
+	res.sendFile(path.join(__dirname, "../build/index.html"));
+});
 
 
 
@@ -41,7 +41,7 @@ app.use(express.static(path.join(__dirname, "../build")));
 
 
 
-app.listen(8181, () => {
+app.listen(8080, () => {
 	console.log(`Server is running on ${PORT}`)
 });
 
