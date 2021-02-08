@@ -1,0 +1,17 @@
+#login-window-main {
+    width: 50vw;
+    height: 50vh;
+    background-color: rgb(20, 17, 28);
+    box-shadow: 0px -1px 14px -1px rgba(204,22,184,0.75);
+    -webkit-box-shadow: 0px -1px 14px -1px rgba(204,22,184,0.75);
+    -moz-box-shadow: 0px -1px 14px -1px rgba(204,22,184,0.75);
+}
+
+#login-window-header {
+    color: whitesmoke;
+    padding: 20px;
+}
+
+#login-window-main > .row > .col-12 > label {
+    color: white!important;
+}
