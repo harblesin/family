@@ -9,9 +9,9 @@ const router = require("./Routes");
 const app = express();
 const PORT = process.env.NODE_SERVER_PORT;
 
-if(process.env.NODE_ENV === "production") {
-	app.use(express.static("../build"));
-}
+// if(process.env.NODE_ENV === "production") {
+// 	app.use(express.static("../build"));
+// }
 
 
 app.use(bodyParser.urlencoded({ extended: true, limit: '1mb' }));
@@ -28,7 +28,7 @@ app.use(express.static(path.join(__dirname, "../build")));
 
 
 app.get('/', (req, res) => {
-	res.sendFile(path.resolve("../build/index.html"));
+	res.sendFile(path.join(__dirname, "/../build/index.html"));
 });
 
 
