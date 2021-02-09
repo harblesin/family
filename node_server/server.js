@@ -13,7 +13,7 @@ const PORT = process.env.NODE_SERVER_PORT;
 // 	app.use(express.static("../build"));
 // }
 
-
+app.use(express.static(path.join(__dirname, "build/")));
 app.use(bodyParser.urlencoded({ extended: true, limit: '1mb' }));
 app.use(bodyParser.json({ limit: '1mb' }));
 app.use(passport.initialize());
@@ -21,15 +21,16 @@ app.use(passport.initialize());
 app.use(cookies());
 app.use(router);
 
-app.use(express.static(path.join(__dirname, "../build")));
+
 
 //PUT ROUTERS HERE ( ALSO NEED TO CREATE ROUTES AND QUERIES INDEX)
 // const musicRouter = require("./Routes/music");
 
+console.log(__dirname)
 
-app.get('/', (req, res) => {
-	res.sendFile(path.join(__dirname, "/../build/index.html"));
-});
+// app.get('*', (req, res) => {
+// 	res.sendFile(path.join(__dirname, "../build/index.html"));
+// });
 
 
 
