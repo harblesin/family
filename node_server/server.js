@@ -13,7 +13,7 @@ const PORT = process.env.NODE_SERVER_PORT;
 // 	app.use(express.static("../build"));
 // }
 
-app.use(express.static(path.join("build/")));
+app.use(express.static("build/"));
 app.use(bodyParser.urlencoded({ extended: true, limit: '1mb' }));
 app.use(bodyParser.json({ limit: '1mb' }));
 app.use(passport.initialize());
