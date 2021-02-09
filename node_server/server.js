@@ -28,9 +28,9 @@ app.use(router);
 
 console.log(__dirname)
 
-// app.get('*', (req, res) => {
-// 	res.sendFile(path.join(__dirname, "../build/index.html"));
-// });
+app.get('/', (req, res) => {
+	res.sendFile(path.join(__dirname, "../build/index.html"));
+});
 
 
 
@@ -45,5 +45,3 @@ console.log(__dirname)
 app.listen(PORT, () => {
 	console.log(`Server is running on ${PORT}`)
 });
-
-module.exports = app;
