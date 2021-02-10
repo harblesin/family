@@ -1,28 +1,24 @@
 require('dotenv').config();
-const mysql = require('mysql');
+const mysql = require("mysql");
 
-let connection;
-const host = process.env.DB_HOST;
-const user = process.env.DB_USER;
-const password = process.env.DB_PASSWORD;
-const database = process.env.DB_DATABASE;
-const dbPort = process.env.DB_PORT;
-
-connection = mysql.createConnection({
-	host,
-	user,
-	password,
-	database: database,
-	namedParamaeters: true,
-	multipleStatements: true,
-	timezone: 'Z'
+let connection = mysql.createConnection({
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+	port: process.env.DB_PORT,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DATABASE,
+    namedParameters: true,
+    multipleStatements: true,
+    timezone: 'Z'
 });
+
 
 connection.connect(err => {
-	if(err)
-	 	console.log("DB CONNECTION FAILED DUDE", err);
-	else 
-		console.log("CONNECTED TO THE DB");
+    if(err)
+        console.log("DATABASE CONNECTION FAILED", err);
+    else   
+        console.log('Connected to MYSQL at ' + process.env.DB_HOST);
 });
+
 
 module.exports = connection;
