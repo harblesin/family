@@ -1,10 +1,14 @@
 #login-window-main {
-    width: 50vw;
-    height: 50vh;
-    background-color: rgb(20, 17, 28);
-    box-shadow: 0px -1px 14px -1px rgba(204,22,184,0.75);
-    -webkit-box-shadow: 0px -1px 14px -1px rgba(204,22,184,0.75);
-    -moz-box-shadow: 0px -1px 14px -1px rgba(204,22,184,0.75);
+    padding: 20px;
+    width: 35vw;
+    height: 30vh;
+    background-color: rgb(25, 24, 28);
+    box-shadow: 0px -1px 14px -1px rgba(78, 33, 73, 0.75);
+    -webkit-box-shadow: 0px -1px 14px -1px rgba(78, 33, 73, 0.75);
+    -moz-box-shadow: 0px -1px 14px -1px rgba(78, 33, 73, 0.75);
+    border-radius: 10px;
+    border: 2px inset rgb(110, 94, 155);
+    position: relative;
 }
 
 #login-window-header {
@@ -15,3 +19,31 @@
 #login-window-main > .row > .col-12 > label {
     color: white!important;
 }
+
+#login-window-main {
+    position: relative;
+}
+
+#login-logo {
+    height: 30vmin;
+    pointer-events: none;
+    position: absolute;
+    top: -300px;
+    left: 30%;
+    z-index: 0;
+  }
+  
+  @media (prefers-reduced-motion: no-preference) {
+    #login-logo {
+      animation: login-logo-spin infinite 2s linear;
+    }
+  }
+
+@keyframes login-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }

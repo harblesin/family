@@ -1,0 +1,16 @@
+.div {
+    position: relative;
+    margin: 0px;
+    padding: 0px;
+}
+
+.button {
+    background-color: rgb(51, 36, 58);
+    color: rgb(216, 206, 225);
+    border-radius: 4px;
+    box-shadow: 0px 0px 4px 1px rgba(88, 21, 151, 0.75);
+    -webkit-box-shadow: 0px 0px 4px 1px rgba(88, 21, 151, 0.75);
+    -moz-box-shadow: 0px 0px 4px 1px rgba(88, 21, 151, 0.75);
+    border: 1px inset rgb(140, 97, 153);
+    margin: 10px;
+}
