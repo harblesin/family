@@ -44,11 +44,9 @@ class LoginWindow extends Component {
             <div>
                 {this.state.loggingIn ? 
                 <Spinner /> :
-                
                 <div id="login-window-main">
+                    <img xs="1" src={logo} id="login-logo" alt="logo" />
                     <Row>
-                                        <img xs="1" src={logo} id="login-logo" alt="logo" />
-
                         <Col xs="12">
                             <h4 id="login-window-header">Who Are You?</h4>
                         </Col>

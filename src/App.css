@@ -1,6 +1,7 @@
 .App {
   text-align: center;
   background-color: #24292e;
+  background-image: linear-gradient(to bottom right, rgb(242, 32, 172), rgb(0, 42, 182))
 }
 
 .App-header {
