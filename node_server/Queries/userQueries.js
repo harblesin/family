@@ -7,5 +7,10 @@ module.exports = {
         id 
         FROM user
         WHERE username = :username AND password = :password;
+    `,
+    findUser: `
+        SELECT password
+        FROM user 
+        WHERE username = :username
     `
 };

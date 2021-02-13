@@ -15,14 +15,42 @@ class LoginWindow extends Component {
         username: "",
         password: "",
         redirect: false,
-        logginIn: false
+        loggingIn: false
     }
 
-    handleChange = event => {
+    onChange = event => {
+        console.log(event.target.name)
         this.setState({ [event.target.name]: event.target.value });
     }
 
-    login = async () => {
+    login = async (event) => {
+        event.preventDefault();
+
+        console.log("what about here")
+
+
+        console.log(this.state.username);
+        console.log(this.state.password)
+
+
+        if(this.state.username && this.state.password) {
+            console.log("really?")
+            let userInfo = {
+                email: this.state.username,
+                password: this.state.password
+            };
+
+            console.log("this is before the api call")
+            API.loginUser(userInfo).then( data => {
+                if(data){
+                    this.setState({ loggingIn: false })
+                }
+                console.log(data)
+            })
+        }
+
+
+
         this.setState({ loggingIn: true })
         new Audio(fartSound).play();;
         let redirect = await API.loginUser(this.state);
@@ -53,12 +81,12 @@ class LoginWindow extends Component {
                     </Row>
                     <Row>
                         <Col xs={{ span: 6, offset: 3}}>
-                            <Form.TextInput label="Username" name="username" handleChange={this.handleChange} />                   
+                            <Form.TextInput label="Username" name="username" value={this.state.username} onChange={this.onChange} />                   
                         </Col>
                     </Row>
                     <Row>
                         <Col xs={{ span: 6, offset: 3 }}>
-                            <Form.Password label="Password" name="password" handleChange={this.handleChange} />                    
+                            <Form.Password label="Password" name="password" value={this.state.password} onChange={this.onChange} />                    
                         </Col>
                     </Row>
                     <Row>
