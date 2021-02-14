@@ -50,3 +50,9 @@
       transform: rotate(360deg);
     }
   }
+
+  .registerLink {
+    color: rgb(107, 107, 198);
+    text-decoration: underline;
+    cursor: pointer;
+  }

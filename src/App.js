@@ -4,6 +4,7 @@ import logo from './Images/homepagelogo.png';
 import './App.css';
 import HomePage from "./Components/HomePage";
 import Login from "./Pages/Login";
+import Register from "./Pages/Register";
 import API from "./utils/userAPI";
 
 class App extends Component {
@@ -22,6 +23,7 @@ class App extends Component {
         <Router>
           <Switch>
             <Route exact path="/home" component={HomePage} />
+            <Route exact path="/register" component={Register} />
             <Route exact path="/" component={Login} />
           </Switch>
         </Router>

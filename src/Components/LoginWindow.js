@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import { Row, Col } from "react-bootstrap";
 import API from "../utils/userAPI";
 import "./LoginWindow.css";
@@ -52,8 +52,8 @@ class LoginWindow extends Component {
 
 
         this.setState({ loggingIn: true })
-        new Audio(fartSound).play();;
-        let redirect = await API.loginUser(this.state);
+        new Audio(fartSound).play();
+        // let redirect = await API.loginUser(this.state);
         return;
     }
 
@@ -63,7 +63,7 @@ class LoginWindow extends Component {
 
     componentDidUpdate = (prevState) => {
         if(this.state.redirect) {
-            return <Redirect to="/home" />
+            return <Redirect from="/" to="/home" />
         }
     }
 
@@ -95,6 +95,11 @@ class LoginWindow extends Component {
                         </Col>
                         <Col xs={{ span: 3 }}>
                             <Form.Button label="Login" onClick={this.login} />
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <Link to="/register"><p className="registerLink">Create an account</p></Link>
                         </Col>
                     </Row>
                 </div> }
