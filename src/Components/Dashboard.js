@@ -13,6 +13,7 @@ class Dashboard extends Component {
 
 render = () => {
     return <div id="dashboard-body">
+        <h3 id="welcomeHeader">Welcome you stupid whore :)</h3>
         <InputMenu />
         <Feed />
     </div>

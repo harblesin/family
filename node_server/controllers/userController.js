@@ -11,37 +11,41 @@ const SALT = 12;
 module.exports = {
     loginUser: (req, res, next) => {
 
+        // console.log(req.query.userInfo)
+
         passport.authenticate("local", { session: false }, (error, user, info) => {
             console.log("0000000", user);
+            console.log(error)
+            console.log(info)
             if(error || !user) {
-                res.send({ error, auth: false });
+                return res.send({ error, auth: false });
             } else {
                 const payload = {
-                    id: user.id,
                     username: user.username,
                     expires: Date.now() + parseInt(3600000)
                 };
                 
                 req.login(payload, { session: false }, error => {
                     if(error){
+                        console.log(error)
                         res.send({ error, auth: false });
                     }
 
-                    const token = jwt.sign(JSON.stringify(payload), keys);
+                    const token = jwt.sign(JSON.stringify(payload), key);
 
                     res.cookie("jwt", token, { secure: false });
-                    res.statis(200).send({ user });
+                    res.status(200).send({ success: true });
                 });
             }
         })(req, res, next);
 
 
 
-        let q = toUnnamed(userQueries.loginUser, { username: req.body.username, password: req.body.password });
-        db.query(q[0], q[1], (err, result) => {
-            if( err ) { return res.json(err)};
-            res.json(result.length ? true : false)
-        });
+        // let q = toUnnamed(userQueries.loginUser, { username: req.body.username, password: req.body.password });
+        // db.query(q[0], q[1], (err, result) => {
+        //     if( err ) { return res.json(err)};
+        //     res.json(result.length ? true : false)
+        // });
     },
 
     signUp: async (req, res) => {
@@ -77,16 +81,26 @@ module.exports = {
         } );
     },
     authCheck: (req, res, next) => {
-        let result = db.query(userQueries.getUsers);
-        res.json(result);
+
+        console.log("hello")
+
+        passport.authenticate('jwt', { sessions: false, successRedirect: "/home", failureRedirect: "http://localhost:3000/" }, (err, user, info) => { 
+            if(err){ res.status(500).json(err)}
+            else if (!user) {res.status(401).send(false)}
+            else { res.status(200).json({user, info})};
+        })(req, res, next);
+        // let result = db.query(userQueries.getUsers);
+        // res.json(result);
     },
     findUser: (req, res) => {
-        let q = toUnnamed(userQueries.findUser, { email: req.query });
-        db.query(q[0], q[1], (err, result) => {
-            console.log(err)
-            console.log(result)
-            if(err) { return res.json(err)};
-            res.json(result)
+        console.log("hello?")
+        return new Promise ( (resolve, reject) => {
+            let q = toUnnamed(userQueries.findUser, { username: req });
+            db.query(q[0], q[1], (err, result) => {
+                if(err) { return reject(err)};
+                resolve(result);
+            })            
         })
+
     }
 }

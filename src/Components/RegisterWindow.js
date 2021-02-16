@@ -3,6 +3,7 @@ import styles from "./RegisterWindow.module.css";
 import { Row, Col } from "react-bootstrap";
 import Form from "../Components/Inputs"
 import API from "../utils/userAPI";
+import { withRouter } from "react-router-dom";
 // import bcrypt from "bcrypt";
 
 class RegisterWindow extends Component {
@@ -40,7 +41,8 @@ class RegisterWindow extends Component {
 
             API.signUp(userInfo).then( (res) => {
                 if(res.data.success) {
-                    alert(res.data.msg)
+                    alert(res.data.msg);
+                    this.props.history.push("/");
                 } else {
                     console.log("i dunno dude")
                 }
@@ -91,4 +93,4 @@ class RegisterWindow extends Component {
 
 }
 
-export default RegisterWindow;
+export default withRouter(RegisterWindow);

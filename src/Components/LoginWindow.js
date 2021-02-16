@@ -7,8 +7,7 @@ import fartSound from "../Audio/fart.wav";
 import Form from "../Components/Inputs";
 import Spinner from "../Components/Spinner";
 import logo from "../Images/homepagelogo.png";
-
-
+import { withRouter } from 'react-router-dom';
 
 class LoginWindow extends Component {
     state = {
@@ -36,23 +35,26 @@ class LoginWindow extends Component {
         if(this.state.username && this.state.password) {
             console.log("really?")
             let userInfo = {
-                email: this.state.username,
+                username: this.state.username,
                 password: this.state.password
             };
 
             console.log("this is before the api call")
-            API.loginUser(userInfo).then( data => {
-                if(data){
+            API.loginUser(userInfo).then( result => {
+                if(result){
                     this.setState({ loggingIn: false })
+                } 
+                if (result.data.success) {
+                    this.props.history.push("/home");
                 }
-                console.log(data)
+                
             })
         }
 
 
 
         this.setState({ loggingIn: true })
-        new Audio(fartSound).play();
+        // new Audio(fartSound).play();
         // let redirect = await API.loginUser(this.state);
         return;
     }
@@ -65,6 +67,14 @@ class LoginWindow extends Component {
         if(this.state.redirect) {
             return <Redirect from="/" to="/home" />
         }
+    }
+
+    componentWillMount = async () => {
+        await API.authCheck().then ( res => {
+			if(res.data){
+				this.props.history.push("/home")
+			}
+		})
     }
 
     render = () => {
@@ -109,4 +119,4 @@ class LoginWindow extends Component {
     }
 }
 
-export default LoginWindow;
+export default withRouter(LoginWindow);

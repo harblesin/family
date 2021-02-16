@@ -4,6 +4,7 @@ const secret = require("./key");
 const passportJWT = require("passport-jwt");
 const JWTStrategy = passportJWT.Strategy;
 const bcrypt = require("bcrypt");
+const SALT = 12;
 
 module.exports = (passport) => {
     const LocalStrategy = require("passport-local").Strategy;
@@ -11,19 +12,30 @@ module.exports = (passport) => {
     passport.use(
         new LocalStrategy(
             {
-                usernameField: "username", 
+                usernameField: "username",
                 passwordField: "password"
             },
-            async ( username, password, done ) => {
+            async (username, password, done) => {
+
+                console.log(username)
                 try {
                     const userInfo = await User.findUser(username);
+                    if (!userInfo.length) {
+                        return done("User Does Not Exist :)");
+                    }
+
                     const passwordsMatch = await bcrypt.compare(
                         password,
-                        userInfo.password
+                        userInfo[0].password
                     );
 
-                    if(passwordsMatch) {
-                        return done(null, userInfo);
+                    let user = {
+                        username: username,
+                        password: password
+                    }
+
+                    if (passwordsMatch) {
+                        return done(null, user);
                     } else {
                         return done("Incorrect Username or Password");
                     }
@@ -40,12 +52,14 @@ module.exports = (passport) => {
             secretOrKey: secret
 
         },
-        (jwtPayload, done) => {
-            if(Date.now() > jwtPayload.expires) {
-                return done("jwt expired");
+            (jwtPayload, done) => {
+
+
+                if (Date.now() > jwtPayload.expires) {
+                    return done("jwt expired");
+                }
+                return done(null, jwtPayload)
             }
-            return done(null, jwtPayload)
-        }
 
         )
     )
