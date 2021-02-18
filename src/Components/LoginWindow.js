@@ -7,6 +7,7 @@ import fartSound from "../Audio/fart.wav";
 import Form from "../Components/Inputs";
 import Spinner from "../Components/Spinner";
 import logo from "../Images/homepagelogo.png";
+import ropeLogo from "../Images/rope.png";
 import { withRouter } from 'react-router-dom';
 
 class LoginWindow extends Component {
@@ -83,7 +84,8 @@ class LoginWindow extends Component {
                 {this.state.loggingIn ? 
                 <Spinner /> :
                 <div id="login-window-main">
-                    <img xs="1" src={logo} id="login-logo" alt="logo" />
+                    {/* <img xs="1" src={logo} id="login-logo" alt="logo" /> */}
+                    <img xs="1" src={ropeLogo} id="rope-logo" alt="rope" />
                     <Row>
                         <Col xs="12">
                             <h4 id="login-window-header">Who Are You?</h4>
