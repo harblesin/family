@@ -10,4 +10,8 @@ router.route("/signup").post(userController.signUp);
 
 router.route("/auth").get(userController.authCheck);
 
+router.route("/status").post(userController.postStatus);
+
+router.route("/status").get(userController.getStatus);
+
 module.exports = router;

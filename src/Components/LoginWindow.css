@@ -2,12 +2,12 @@
     padding: 20px;
     width: 35vw;
     height: 30vh;
-    background-color: rgb(25, 24, 28);
+    background-color: rgb(172, 172, 172);
     box-shadow: 0px -1px 14px -1px rgba(78, 33, 73, 0.75);
     -webkit-box-shadow: 0px -1px 14px -1px rgba(78, 33, 73, 0.75);
     -moz-box-shadow: 0px -1px 14px -1px rgba(78, 33, 73, 0.75);
     border-radius: 10px;
-    border: 2px inset rgb(110, 94, 155);
+    border: 2px inset rgb(40, 40, 40);
     position: relative;
 }
 
@@ -27,22 +27,22 @@
     -moz-box-shadow: 0px -1px 14px -1px rgba(255, 255, 255, 0.75);
 }
 
-#login-logo {
+#rope-logo {
     height: 30vmin;
     pointer-events: none;
     position: absolute;
-    top: -300px;
-    left: 13vw;
+    top: -75px;
+    left: 10vw;
     z-index: 0;
   }
   
   @media (prefers-reduced-motion: no-preference) {
-    #login-logo {
-      animation: login-logo-spin infinite 2s linear;
+    #rope-logo {
+      animation: rope-logo-spin infinite 3s linear;
     }
   }
 
-@keyframes login-logo-spin {
+@keyframes rope-logo-spin {
     from {
       transform: rotate(0deg);
     }
@@ -52,7 +52,7 @@
   }
 
   .registerLink {
-    color: rgb(107, 107, 198);
+    color: rgb(19, 19, 186);
     text-decoration: underline;
     cursor: pointer;
   }

@@ -7,20 +7,18 @@ const userQueries = require("../Queries/userQueries");
 const key = require("../config/key");
 const toUnnamed = require("named-placeholders")();
 const SALT = 12;
+// const ws = require("ws");
+// const client = new ws("ws://localhost:8080");
 
 module.exports = {
     loginUser: (req, res, next) => {
 
-        // console.log(req.query.userInfo)
-
         passport.authenticate("local", { session: false }, (error, user, info) => {
-            console.log("0000000", user);
-            console.log(error)
-            console.log(info)
             if(error || !user) {
                 return res.send({ error, auth: false });
             } else {
                 const payload = {
+                    id: user.id,
                     username: user.username,
                     expires: Date.now() + parseInt(3600000)
                 };
@@ -49,8 +47,6 @@ module.exports = {
     },
 
     signUp: async (req, res) => {
-
-        console.log('hell')
 
         let { email, username, password } = req.body;
         let q = toUnnamed(userQueries.checkForExistingUser, { email, username });
@@ -81,19 +77,13 @@ module.exports = {
         } );
     },
     authCheck: (req, res, next) => {
-
-        console.log("hello")
-
         passport.authenticate('jwt', { sessions: false, successRedirect: "/home", failureRedirect: "http://localhost:3000/" }, (err, user, info) => { 
             if(err){ res.status(500).json(err)}
             else if (!user) {res.status(401).send(false)}
             else { res.status(200).json({user, info})};
         })(req, res, next);
-        // let result = db.query(userQueries.getUsers);
-        // res.json(result);
     },
     findUser: (req, res) => {
-        console.log("hello?")
         return new Promise ( (resolve, reject) => {
             let q = toUnnamed(userQueries.findUser, { username: req });
             db.query(q[0], q[1], (err, result) => {
@@ -102,5 +92,49 @@ module.exports = {
             })            
         })
 
+    },
+    postStatus: (req, res, next) => {
+
+        passport.authenticate('jwt', { sessions: false }, ( err, user, info) => {
+
+            let q = toUnnamed(userQueries.postStatus, { status: req.body.status, user: user.id });
+
+            db.query(q[0], q[1], (err, result) => {
+                if(err) { return res.json(err)}
+                res.json({ success: "Piss!" });
+            })
+
+        })(req, res, next);
+    },
+    getStatus: (req, res, next) => {
+
+
+        console.log("yeah")
+
+        // client.on("open", () => {
+        //     client.send("Hello")
+        // })
+
+
+        res.json()
+
+
+
+
+        // passport.authenticate('jwt', { sessions: false }, ( err, user, info) => {
+
+        //     let q = toUnnamed(userQueries.getStatus, {userId: user.id });
+
+        //     console.log("he")
+
+        //     db.query(q[0], q[1], (err, result) => {
+        //         console.log(err)
+        //         if(err) { return res.json(err) };
+
+
+        //         console.log(result)
+        //         res.json(result);
+        //     })
+        // })(req, res, next)
     }
 }

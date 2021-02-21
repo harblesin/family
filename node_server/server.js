@@ -4,6 +4,14 @@ const bodyParser = require("body-parser");
 const passport = require("passport");
 const cookies = require("cookie-parser");
 const path = require("path");
+const WebSocket = require("ws");
+// const setupWebSocket = require("websocket");
+
+const wss = new WebSocket.Server({ noServer: true, clientTracking: true });
+wss.on("connection", socket => {
+	socket.on('message', message => console.log(message));
+})
+
 
 const router = require("./Routes");
 const app = express();
@@ -17,6 +25,15 @@ app.use(passport.initialize());
 app.use(cookies());
 app.use(router);
 
-app.listen(PORT, () => {
+let server = app.listen(PORT, () => {
 	console.log(`Server is running on ${PORT}`)
 });
+
+
+server.on('upgrade', (req, socket, head) => {
+	wss.handleUpgrade(req, socket, head, socket => {
+		wss.emit('connection', socket, req);
+	})
+})
+
+

@@ -30,6 +30,7 @@ module.exports = (passport) => {
                     );
 
                     let user = {
+                        id: userInfo[0].id,
                         username: username,
                         password: password
                     }
@@ -50,10 +51,8 @@ module.exports = (passport) => {
         new JWTStrategy({
             jwtFromRequest: req => req.cookies.jwt,
             secretOrKey: secret
-
         },
             (jwtPayload, done) => {
-
 
                 if (Date.now() > jwtPayload.expires) {
                     return done("jwt expired");

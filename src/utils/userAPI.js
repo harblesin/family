@@ -12,5 +12,11 @@ export default  {
     },
     signUp: (userInfo) => {
         return axios.post("/api/user/signup", userInfo);
+    },
+    postStatus: (status) => {
+        return axios.post("/api/user/status", status);
+    },
+    getStatus: () => {
+        return axios.get("/api/user/status");
     }
 }

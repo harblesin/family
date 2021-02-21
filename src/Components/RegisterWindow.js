@@ -21,6 +21,7 @@ class RegisterWindow extends Component {
     signUp = async (e) => {
         e.preventDefault();
         let { email, username, password, confirmPassword } = this.state;
+
         if(email && username && password && confirmPassword ) {
 
             if(password !== confirmPassword){
@@ -62,12 +63,12 @@ class RegisterWindow extends Component {
                 <br/>
                 <Row>
                     <Col xs={{ span: 6, offset: 3}}>
-                        <Form.TextInput label="Email" name="email" value={this.state.email} onChange={this.onChange} />
+                        <Form.TextInput label="Email" name="email" onChange={this.onChange} />
                     </Col>
                 </Row>
                 <Row>
                     <Col xs={{ span: 6, offset: 3}}>
-                        <Form.TextInput label="Username" name="username" value={this.state.username} onChange={this.onChange} />
+                        <Form.TextInput label="Username" name="username" onChange={this.onChange} />
                     </Col>
                 </Row>
                 <Row>

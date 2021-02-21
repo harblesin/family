@@ -9,7 +9,7 @@ module.exports = {
         WHERE username = :username AND password = :password;
     `,
     findUser: `
-        SELECT password
+        SELECT id, password
         FROM user 
         WHERE username = :username
     `,
@@ -25,5 +25,18 @@ module.exports = {
         ) VALUES (
             :email, :username, :password
         );
+    `,
+    postStatus: `
+        INSERT INTO status (
+            user_id, status, image
+        ) VALUES (
+            :user, :status, :image
+        )
+    `,
+    getStatus: `
+        SELECT
+        *
+        FROM status
+        WHERE user_id = :userId
     `
 };
