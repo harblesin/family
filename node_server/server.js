@@ -9,7 +9,22 @@ const WebSocket = require("ws");
 
 const wss = new WebSocket.Server({ noServer: true, clientTracking: true });
 wss.on("connection", socket => {
-	socket.on('message', message => console.log(message));
+	socket.on('message', function incoming(message) {
+
+
+		wss.clients.forEach( function each(client) {
+			if(client.readyState === WebSocket.OPEN) {
+				client.send(message)
+			}
+		})
+
+
+
+		console.log("message", message);
+		// console.log(socket)
+		// socket.emit('heres your message'+message)
+	});
+	// socket.send('heres your message' + message)
 })
 
 

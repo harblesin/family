@@ -1,0 +1,6 @@
+.div {
+    height: 400px;
+    justify-content: space-around;
+    background-color: rgb(65, 60, 60);
+    border: 2px inset palevioletred;
+}

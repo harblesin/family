@@ -12,18 +12,7 @@ import Password from './Inputs/Password';
 export default function InputMenu() {
 
 
-    let ws = new WebSocket("ws:localhost:8080");
-
-    ws.onopen = () => {
-        console.log("Websocket is connect ....");
-
-        ws.send("connected");
-
-        ws.onmessage = (ev) => {
-            console.log(ev)
-        }
-    }
-
+    const ws = new WebSocket("ws:localhost:8080");
 
     const [ state, setState ] = useState({});
 
@@ -63,11 +52,20 @@ export default function InputMenu() {
 
     useEffect((props) => {
 
-        console.log(props)
+    
 
-        // if(props.state.statuses === state.statuses){
-        //     console.log("bro they're the same")
+    ws.onopen = () => {
+        console.log("Websocket is connect ....");
+
+        ws.send("connected");
+
+        // ws.onmessage = (ev) => {
+        //     console.log("ev", ev)
         // }
+    }
+
+
+
 
         getStatus()
     }, [] )
