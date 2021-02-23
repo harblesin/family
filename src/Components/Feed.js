@@ -10,7 +10,7 @@ class Feed extends Component {
     }
 
     componentDidMount = () => {
-        let ws = new WebSocket("ws:192.168.1.3:8080");
+        let ws = new WebSocket(`ws:localhost:${process.env.NODE_SERVER_PORT}`);
 
         ws.onopen = () => {
 
