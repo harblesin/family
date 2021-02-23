@@ -1,6 +1,4 @@
-import React, { Component } from "react";
-import axios from 'axios';
-import Dashboard from "../Components/Dashboard";
+import React from "react";
 import LoginWindow from "../Components/LoginWindow";
 import "./LoginPage.css";
 

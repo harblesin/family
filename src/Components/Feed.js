@@ -1,83 +1,42 @@
-import React, { useState, useEffect } from 'react';
+import React, { Component } from 'react';
 import styles from "./Feed.module.css";
 
 
 
+class Feed extends Component {
 
-const Feed = props => {
+    state = {
+        messages: []
+    }
 
-
-    const [ state, setState ] = useState({})
-
-    // const useState = () => {
-
-    // }
-
-    // let ws = new WebSocket("ws:localhost:8080");
-
-    // ws.onopen('message', (message: string) => {
-    //     wss.clients.forEach( client => {
-    //         if(client != ws){
-    //             client.send("HETY DUUDE");
-    //         } else {
-    //             ws.send("Hey dod, " + message);
-    //         }
-    //     })
-    // })
-
-
-
-
-
-    useEffect( () => {
+    componentDidMount = () => {
         let ws = new WebSocket("ws:localhost:8080");
 
         ws.onopen = () => {
-            console.log("Feed is connect ....");
-
-            // ws.send("connected");
 
             ws.onmessage = (ev) => {
 
-                let msgArr = state.messages ? state.messages : [];
+                let { user, status } = JSON.parse(ev.data);
+                let { messages } = this.state;
+                messages.push({ user, status });
+                this.setState({ messages });
 
-
-                msgArr.push({message: ev.data})
-                console.log(state.messages)
-
-
-
-                // console.log("hey dude what up")
-
-                // messages.push(ev)
-
-                setState({ messages: msgArr })
-
-
-
-
-                console.log('message from server', ev)
             }
         }
-    }, [])
+    }
 
-
-
-
-    return  <div className={styles.div}>
-                
-                {
-                 state.messages ?
-                state.messages.map( m => (
-                    <div>
-                    <p style={{color: "white"}}>{m.message}</p><br/>
+    render = () => {
+        return (
+            <div id="feed" className={styles.div}>
+                {this.state.messages.map( (m, index) => (
+                    <div key={index} className={styles.message}>
+                        <p className={styles.user}>{m.user}:</p><p className={styles.text}>{m.status}</p>
                     </div>
-                ))
-            
-             :
-             null
-            }
-            </div>
+                    
+                ))}
+            </div>               
+        )      
+    }
 
 }
 

@@ -14,4 +14,6 @@ router.route("/status").post(userController.postStatus);
 
 router.route("/status").get(userController.getStatus);
 
+router.route("/message").post(userController.sendMessage);
+
 module.exports = router;

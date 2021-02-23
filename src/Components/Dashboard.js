@@ -1,18 +1,15 @@
-import React, { Component } from "react";
+import React from "react";
 import { Row, Col } from "react-bootstrap";
 import "./Dashboard.css"
-import axios from "axios";
 import InputMenu from "./InputMenu";
 import Feed from "./Feed";
 
 
 
-class Dashboard extends Component {
-    state = {
-        settings: ""
-    }
+const Dashboard = (props) => {
 
-render = () => {
+
+// render = () => {
     return <div id="dashboard-body">
         <h3 id="welcomeHeader">Welcome you stupid whore :)</h3>
         <Row>
@@ -21,9 +18,9 @@ render = () => {
             </Col>
         </Row>
 
-        <InputMenu />
+        <InputMenu user={props.user} />
     </div>
-}
+// }
 
 
 

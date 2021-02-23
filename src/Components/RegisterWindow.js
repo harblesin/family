@@ -30,7 +30,7 @@ class RegisterWindow extends Component {
             }
 
 
-            let hashCost = 12;
+            // let hashCost = 12;
 
             // password = await bcrypt.hash(password, hashCost);
 

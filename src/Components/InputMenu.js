@@ -4,12 +4,8 @@ import fartSound from "../Audio/fart.wav";
 import API from "../utils/userAPI";
 import styles from "./InputMenu.module.css";
 import Form from "../Components/Inputs";
-import Password from './Inputs/Password';
 
-
-
-
-export default function InputMenu() {
+export default function InputMenu(props) {
 
 
     const ws = new WebSocket("ws:localhost:8080");
@@ -30,44 +26,36 @@ export default function InputMenu() {
         fart.play();
     }
 
-    const postStatus = (status) => {
+    const postStatus = (e, status) => {
+        e.preventDefault();
 
-        console.log(status)
+        doThing();
 
         if(!status.trim().length){
             return;
         }
 
-        ws.send(status)
+        let message = {
+            user: props.user,
+            status
+        }
+
+        ws.send(JSON.stringify(message));
+        setState({ status: "" })
 
     }
 
     const getStatus = () => {
-        console.log("HEY")
         API.getStatus().then( result => {
             setState({ statuses: result.data });
-            console.log(result)
         })
     }
 
     useEffect((props) => {
-
-    
-
-    ws.onopen = () => {
-        console.log("Websocket is connect ....");
-
-        ws.send("connected");
-
-        // ws.onmessage = (ev) => {
-        //     console.log("ev", ev)
+        // ws.onopen = () => {
+        //     ws.send("connected");
         // }
-    }
-
-
-
-
-        getStatus()
+            getStatus()
     }, [] )
 
 
@@ -76,39 +64,22 @@ export default function InputMenu() {
             <audio id="fart">
                 <source src="fart" />
             </audio>
-
-
-
-            {
-            state.statuses ? 
-            
-            state.statuses.map( s => (
-                    <div style={{height: "200px", width: "100px;", color: "white"}}>
-                        {s.status} SHIT
-                    </div>            
-                ))
-                :
-                null
-            }
-            <Row>
-                <Col xs="12">
-                    <Form.TextInput name="status" onChange={onChange} />
-                </Col>
-            </Row>
-            <Row>
-                <Col xs="4">
-                    <Form.Button label="Whore" onClick={() => postStatus(state.status)} />
-                </Col>
-                <Col xs="4">
-                    <Form.Button label="Whore" />
-                </Col>
-                <Col xs="4">
-                    <Form.Button label="Whore" />
-                </Col>
-            </Row>
-            <Row>
-                <Col lg="6">what </Col>
-            </Row>           
+            <form onSubmit={(e) => postStatus(e, state.status)}>
+                <Row>
+                    <Col xs="12">
+                        <Form.TextInput name="status" value={state.status} onChange={onChange} />
+                    </Col>
+                </Row>
+                <Row>
+                    <Col xs="4">
+                        <Form.Button label="Post" />
+                    </Col>
+                </Row>
+                <Row>
+                    <Col lg="6">what </Col>
+                </Row>                      
+            </form>
+     
 
         </div>
     )

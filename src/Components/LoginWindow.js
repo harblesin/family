@@ -3,10 +3,8 @@ import { Redirect, Link } from "react-router-dom";
 import { Row, Col } from "react-bootstrap";
 import API from "../utils/userAPI";
 import "./LoginWindow.css";
-import fartSound from "../Audio/fart.wav";
 import Form from "../Components/Inputs";
 import Spinner from "../Components/Spinner";
-import logo from "../Images/homepagelogo.png";
 import ropeLogo from "../Images/rope.png";
 import { withRouter } from 'react-router-dom';
 

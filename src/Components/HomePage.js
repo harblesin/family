@@ -6,18 +6,24 @@ import { withRouter } from "react-router-dom";
 
 class HomePage extends Component {
 
-	componentWillMount = async () => {
+	state = {
+		user: ""
+	}
+
+	componentDidMount = async () => {
 
 		await API.authCheck().then ( res => {
 			if(!res.data){
 				this.props.history.push("/")
+			} else {
+				this.setState({ user: res.data.user.username })
 			}
 		})
 	}
 
 	render = () => {
 		return <div id="homepage-body">
-				<Dashboard />
+				<Dashboard user={this.state.user} />
 		</div>
 	}
 

@@ -7,6 +7,9 @@ const userQueries = require("../Queries/userQueries");
 const key = require("../config/key");
 const toUnnamed = require("named-placeholders")();
 const SALT = 12;
+// const WebSocket = require("ws");
+// const wss = new WebSocket.Server({ noServer: true, clientTracking: true });
+
 // const ws = require("ws");
 // const client = new ws("ws://localhost:8080");
 
@@ -136,5 +139,28 @@ module.exports = {
         //         res.json(result);
         //     })
         // })(req, res, next)
+    },
+    sendMessage: (req, res, next) => {
+//         passport.authenticate('jwt', {session: false }, (err, user, info) => {
+//             wss.on("connection", socket => {
+//                 socket.on('message', function incoming(message) {
+
+
+//                     wss.clients.forEach( function each(client) {
+//                         console.log(client)
+//                         if(client.readyState === WebSocket.OPEN) {
+//                             client.send(message)
+//                         }
+//                     })
+
+
+//                     res.json()
+//                     console.log("message", message);
+// 		// console.log(socket)
+// 		// socket.emit('heres your message'+message)
+// 	});
+// 	// socket.send('heres your message' + message)
+// })
+//         })(req, res, next)
     }
 }

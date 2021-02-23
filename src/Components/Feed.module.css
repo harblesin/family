@@ -4,3 +4,20 @@
     background-color: rgb(65, 60, 60);
     border: 2px inset palevioletred;
 }
+
+.message {
+    display: flex;
+    color: white;
+    height: 10px;
+    font-size: 10px;
+}
+
+.user {
+    float: left;
+    color: blue;
+    margin-right: 10px;
+}
+
+.text{
+    color:palevioletred;
+}

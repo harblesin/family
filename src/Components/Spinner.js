@@ -7,7 +7,7 @@ const Spinner = props => {
     return (
         <div className={styles.loginSpinner}>
             <h1 className={styles.h1}>Jus chcking to ese if things are chil . . . </h1>
-            <img src={logo} className={styles.loadingSpinner} />
+            <img src={logo} className={styles.loadingSpinner} alt="Spinning logo" />
         </div>       
     )
 }
