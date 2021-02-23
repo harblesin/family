@@ -4,11 +4,12 @@ import fartSound from "../Audio/fart.wav";
 import API from "../utils/userAPI";
 import styles from "./InputMenu.module.css";
 import Form from "../Components/Inputs";
+import PORT from process.env.NODE_ENV === "production" ? process.env.NOTE_SERVER_PORT : "8080";
 
 export default function InputMenu(props) {
 
 
-    const ws = new WebSocket("ws:localhost:8080");
+    const ws = new WebSocket(`ws:localhost:${PORT}`);
 
     const [ state, setState ] = useState({});
 
