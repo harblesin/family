@@ -9,8 +9,10 @@ import Form from "../Components/Inputs";
 
 export default function InputMenu(props) {
 
+    console.log(process.env.NODE_SERVER_PORT)
 
-    const ws = new WebSocket(`ws:localhost:${process.env.NODE_SERVER_PORT}`);
+
+    const ws = new WebSocket(`ws:localhost:8080`);
 
     const [ state, setState ] = useState({});
 
@@ -68,18 +70,13 @@ export default function InputMenu(props) {
             </audio>
             <form onSubmit={(e) => postStatus(e, state.status)}>
                 <Row>
-                    <Col xs="12">
-                        <Form.TextInput name="status" value={state.status} onChange={onChange} />
+                    <Col xs="10">
+                        <Form.TextInput label="True" name="status" value={state.status} onChange={onChange} />
                     </Col>
-                </Row>
-                <Row>
-                    <Col xs="4">
+                    <Col xs="2">
                         <Form.Button label="Post" />
                     </Col>
-                </Row>
-                <Row>
-                    <Col lg="6">what </Col>
-                </Row>                      
+                </Row>                    
             </form>
      
 

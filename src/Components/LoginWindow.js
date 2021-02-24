@@ -59,7 +59,7 @@ class LoginWindow extends Component {
     }
 
     cancel = () => {
-        this.setState({ userName: "", password: "", redirect: false })
+        this.setState({ username: "", password: "", redirect: false })
     }
 
     componentDidUpdate = (prevState) => {
@@ -81,38 +81,41 @@ class LoginWindow extends Component {
             <div>
                 {this.state.loggingIn ? 
                 <Spinner /> :
-                <div id="login-window-main">
-                    {/* <img xs="1" src={logo} id="login-logo" alt="logo" /> */}
-                    <img xs="1" src={ropeLogo} id="rope-logo" alt="rope" />
-                    <Row>
-                        <Col xs="12">
-                            <h4 id="login-window-header">Who Are You?</h4>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col xs={{ span: 6, offset: 3}}>
-                            <Form.TextInput label="Username" name="username" value={this.state.username} onChange={this.onChange} />                   
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col xs={{ span: 6, offset: 3 }}>
-                            <Form.Password label="Password" name="password" value={this.state.password} onChange={this.onChange} />                    
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col xs={{ span: 3, offset: 3 }}>
-                            <Form.Button label="Cancel" onClick={this.cancel} />
-                        </Col>
-                        <Col xs={{ span: 3 }}>
-                            <Form.Button label="Login" onClick={this.login} />
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col>
-                            <Link to="/register"><p className="registerLink">Create an account</p></Link>
-                        </Col>
-                    </Row>
-                </div> }
+                <div>
+                    <img src={ropeLogo} id="rope-logo" alt="rope" />
+                    <div id="login-window-main">
+                        <Row>
+                            <Col xs="12">
+                                <h4 id="login-window-header">Who Are You?</h4>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col xs={{ span: 12 }} md={{ span: 6, offset: 3 }}>
+                                <Form.TextInput label="Username" name="username" value={this.state.username} onChange={this.onChange} />                   
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col xs={{ span: 12 }} md={{ span: 6, offset: 3 }}>
+                                <Form.Password label="Password" name="password" value={this.state.password} onChange={this.onChange} />                    
+                            </Col>
+                        </Row>
+                        <Row>
+                            <form onSubmit={this.login} >
+                                <Col xs={{ span: 12 }} md={{ span: 3, offset: 3 }}>
+                                    <Form.Button label="Login" onClick={this.login} />
+                                </Col>
+                                <Col xs={{ span: 12 }} md={{ span: 3 }}>
+                                    <Form.Button label="Clear" onClick={this.cancel} />
+                                </Col>                                
+                            </form>
+                        </Row>
+                        <Row>
+                            <Col>
+                                <Link to="/register"><p className="registerLink">Create an account</p></Link>
+                            </Col>
+                        </Row>
+                    </div> 
+                </div>}
             </div>
 
         )

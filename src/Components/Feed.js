@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import styles from "./Feed.module.css";
 
-
-
 class Feed extends Component {
 
     state = {
@@ -10,17 +8,13 @@ class Feed extends Component {
     }
 
     componentDidMount = () => {
-        let ws = new WebSocket(`ws:localhost:${process.env.NODE_SERVER_PORT}`);
-
+        let ws = new WebSocket(`ws:localhost:8080`);
         ws.onopen = () => {
-
             ws.onmessage = (ev) => {
-
                 let { user, status } = JSON.parse(ev.data);
                 let { messages } = this.state;
                 messages.push({ user, status });
                 this.setState({ messages });
-
             }
         }
     }

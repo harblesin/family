@@ -3,6 +3,7 @@
     justify-content: space-around;
     background-color: rgb(65, 60, 60);
     border: 2px inset palevioletred;
+    border-radius: 5px;
 }
 
 .message {
@@ -20,4 +21,6 @@
 
 .text{
     color:palevioletred;
+    float: left;
+    margin-top: 3px;
 }

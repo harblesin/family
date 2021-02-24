@@ -1,14 +1,14 @@
 #login-window-main {
     padding: 20px;
     width: 35vw;
-    height: 30vh;
+    height: auto;
     background-color: rgb(172, 172, 172);
-    box-shadow: 0px -1px 14px -1px rgba(78, 33, 73, 0.75);
-    -webkit-box-shadow: 0px -1px 14px -1px rgba(78, 33, 73, 0.75);
-    -moz-box-shadow: 0px -1px 14px -1px rgba(78, 33, 73, 0.75);
     border-radius: 10px;
     border: 2px inset rgb(40, 40, 40);
     position: relative;
+    box-shadow: 0px -1px 14px -1px rgba(252, 252, 252, 0.75);
+    -webkit-box-shadow: 0px -1px 25px -1px rgba(255, 255, 255, 0.75);
+    -moz-box-shadow: 0px -1px 14px -1px rgba(255, 255, 255, 0.75);
 }
 
 #login-window-header {
@@ -20,25 +20,16 @@
     color: white!important;
 }
 
-#login-window-main {
-    position: relative;
-    box-shadow: 0px -1px 14px -1px rgba(252, 252, 252, 0.75);
-    -webkit-box-shadow: 0px -1px 25px -1px rgba(255, 255, 255, 0.75);
-    -moz-box-shadow: 0px -1px 14px -1px rgba(255, 255, 255, 0.75);
-}
-
 #rope-logo {
     height: 30vmin;
     pointer-events: none;
-    position: absolute;
-    top: -75px;
-    left: 10vw;
-    z-index: 0;
+    margin-top: -200px;
+    z-index: 1;
   }
   
   @media (prefers-reduced-motion: no-preference) {
     #rope-logo {
-      animation: rope-logo-spin infinite 3s linear;
+      animation: rope-logo-spin infinite 5s linear;
     }
   }
 
@@ -52,7 +43,7 @@
   }
 
   .registerLink {
-    color: rgb(19, 19, 186);
+    color: rgb(253, 253, 253);
     text-decoration: underline;
     cursor: pointer;
   }

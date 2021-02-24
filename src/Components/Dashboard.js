@@ -13,7 +13,7 @@ const Dashboard = (props) => {
     return <div id="dashboard-body">
         <h3 id="welcomeHeader">Welcome you stupid whore :)</h3>
         <Row>
-            <Col xs={{ span: 8, offset: 2}}>
+            <Col xs={{ span: 12 }}>
                 <Feed />                
             </Col>
         </Row>
