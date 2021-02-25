@@ -7,7 +7,7 @@ import Form from "../Components/Inputs";
 
 export default function InputMenu(props) {
 
-    const ws = new WebSocket(`ws:localhost:8080`);
+    const ws = new WebSocket(`ws:192.168.1.3:8080`);
 
     const [ state, setState ] = useState({
         text: ''
