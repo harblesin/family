@@ -4,6 +4,7 @@
     background-color: rgb(65, 60, 60);
     border: 2px inset palevioletred;
     border-radius: 5px;
+    overflow: auto;
 }
 
 .message {

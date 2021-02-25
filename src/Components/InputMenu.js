@@ -4,17 +4,14 @@ import fartSound from "../Audio/fart.wav";
 import API from "../utils/userAPI";
 import styles from "./InputMenu.module.css";
 import Form from "../Components/Inputs";
-// import ENV from "../../.env";
-// import PORT from process.env.NODE_ENV === "production" ? process.env.SOCKET_PORT : "8080";
 
 export default function InputMenu(props) {
 
-    console.log(process.env.NODE_SERVER_PORT)
+    const ws = new WebSocket(`${process.env.REACT_APP_ENV === 'development' ? "ws" : "wss"}:localhost:8080`);
 
-
-    const ws = new WebSocket(`ws:localhost:8080`);
-
-    const [ state, setState ] = useState({});
+    const [ state, setState ] = useState({
+        text: ''
+    });
 
     const onChange = (e) => {
         let { name, value } = e.target;
@@ -30,37 +27,57 @@ export default function InputMenu(props) {
         fart.play();
     }
 
-    const postStatus = (e, status) => {
+    const postStatus = (e, text) => {
         e.preventDefault();
 
         doThing();
 
-        if(!status.trim().length){
+        if(!text){
             return;
         }
 
         let message = {
             user: props.user,
-            status
+            text
         }
 
-        ws.send(JSON.stringify(message));
-        setState({ status: "" })
+        send(message);
 
     }
+    
 
-    const getStatus = () => {
-        API.getStatus().then( result => {
-            setState({ statuses: result.data });
-        })
+    const send = (message, callback) => {
+        waitForConnection( () => {
+            ws.send(JSON.stringify(message));
+            setState({ text: ""})        
+            if(typeof callback !== 'undefined') {
+                callback();
+            }    
+        }, 1000)
     }
 
-    useEffect((props) => {
-        // ws.onopen = () => {
-        //     ws.send("connected");
-        // }
-            getStatus()
-    }, [] )
+
+    const waitForConnection = (callback, interval) => {
+        if(ws.readyState === 1){
+            callback();
+        } else {
+            setTimeout( () => {
+                waitForConnection(callback, interval)
+            }, interval)
+        }
+    }
+
+
+
+    // const getStatus = () => {
+    //     API.getStatus().then( result => {
+    //         setState({ statuses: result.data });
+    //     })
+    // }
+
+    // useEffect((props) => {
+    //         // getStatus()
+    // }, [] )
 
 
     return  ( 
@@ -68,10 +85,10 @@ export default function InputMenu(props) {
             <audio id="fart">
                 <source src="fart" />
             </audio>
-            <form onSubmit={(e) => postStatus(e, state.status)}>
+            <form onSubmit={(e) => postStatus(e, state.text)}>
                 <Row>
                     <Col xs="10">
-                        <Form.TextInput label="True" name="status" value={state.status} onChange={onChange} />
+                        <Form.TextInput label="True" name="text" value={state.text} onChange={onChange} />
                     </Col>
                     <Col xs="2">
                         <Form.Button label="Post" />

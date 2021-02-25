@@ -5,7 +5,6 @@ const passport = require("passport");
 const cookies = require("cookie-parser");
 const path = require("path");
 const WebSocket = require("ws");
-// const setupWebSocket = require("websocket");
 
 const wss = new WebSocket.Server({ noServer: true, clientTracking: true });
 wss.on("connection", socket => {
