@@ -31,7 +31,7 @@ class LoginWindow extends Component {
         console.log(this.state.password)
 
 
-        if(this.state.username && this.state.password) {
+        if (this.state.username && this.state.password) {
             console.log("really?")
             let userInfo = {
                 username: this.state.username,
@@ -39,14 +39,14 @@ class LoginWindow extends Component {
             };
 
             console.log("this is before the api call")
-            API.loginUser(userInfo).then( result => {
-                if(result){
+            API.loginUser(userInfo).then(result => {
+                if (result) {
                     this.setState({ loggingIn: false })
-                } 
+                }
                 if (result.data.success) {
                     this.props.history.push("/home");
                 }
-                
+
             })
         }
 
@@ -63,59 +63,59 @@ class LoginWindow extends Component {
     }
 
     componentDidUpdate = (prevState) => {
-        if(this.state.redirect) {
+        if (this.state.redirect) {
             return <Redirect from="/" to="/home" />
         }
     }
 
     componentWillMount = async () => {
-        await API.authCheck().then ( res => {
-			if(res.data){
-				this.props.history.push("/home")
-			}
-		})
+        await API.authCheck().then(res => {
+            if (res.data) {
+                this.props.history.push("/home")
+            }
+        })
     }
 
     render = () => {
         return (
             <div>
-                {this.state.loggingIn ? 
-                <Spinner /> :
-                <div>
-                    <img src={ropeLogo} id="rope-logo" alt="rope" />
-                    <div id="login-window-main">
-                        <Row>
-                            <Col xs="12">
-                                <h4 id="login-window-header">Who Are You?</h4>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col xs={{ span: 12 }} md={{ span: 6, offset: 3 }}>
-                                <Form.TextInput label="Username" name="username" value={this.state.username} onChange={this.onChange} />                   
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col xs={{ span: 12 }} md={{ span: 6, offset: 3 }}>
-                                <Form.Password label="Password" name="password" value={this.state.password} onChange={this.onChange} />                    
-                            </Col>
-                        </Row>
-                        <Row>
-                            <form onSubmit={this.login} >
-                                <Col xs={{ span: 12 }} md={{ span: 3, offset: 3 }}>
-                                    <Form.Button label="Login" onClick={this.login} />
+                {this.state.loggingIn ?
+                    <Spinner /> :
+                    <div>
+                        <img src={ropeLogo} id="rope-logo" alt="rope" />
+                        <div id="login-window-main">
+                            <Row>
+                                <Col xs="12">
+                                    <h4 id="login-window-header">Who Are You?</h4>
                                 </Col>
-                                <Col xs={{ span: 12 }} md={{ span: 3 }}>
-                                    <Form.Button label="Clear" onClick={this.cancel} />
-                                </Col>                                
+                            </Row>
+                            <Row>
+                                <Col xs={{ span: 12 }} md={{ span: 6, offset: 3 }}>
+                                    <Form.TextInput label="Username" name="username" value={this.state.username} onChange={this.onChange} />
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col xs={{ span: 12 }} md={{ span: 6, offset: 3 }}>
+                                    <Form.Password label="Password" name="password" value={this.state.password} onChange={this.onChange} />
+                                </Col>
+                            </Row>
+                            <form onSubmit={this.login} >
+                                <Row>
+                                    <Col xs={{ span: 12 }} md={{ span: 3, offset: 3 }}>
+                                        <Form.Button label="Login" onClick={this.login} />
+                                    </Col>
+                                    <Col xs={{ span: 12 }} md={{ span: 3 }}>
+                                        <Form.Button label="Clear" onClick={this.cancel} />
+                                    </Col>
+                                </Row>
                             </form>
-                        </Row>
-                        <Row>
-                            <Col>
-                                <Link to="/register"><p className="registerLink">Create an account</p></Link>
-                            </Col>
-                        </Row>
-                    </div> 
-                </div>}
+                            <Row>
+                                <Col>
+                                    <Link to="/register"><p className="registerLink">Create an account</p></Link>
+                                </Col>
+                            </Row>
+                        </div>
+                    </div>}
             </div>
 
         )
