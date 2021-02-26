@@ -7,7 +7,7 @@ import Form from "../Components/Inputs";
 
 export default function InputMenu(props) {
 
-    const ws = new WebSocket(`${process.env.REACT_APP_ENV === 'production' ? 'wss' : 'ws'}://localhost:8080`);
+    const ws = new WebSocket(`${process.env.REACT_APP_ENV === 'production' ? 'wss://192.168.1.3:8080' : 'ws://localhost:8080'}`);
 
     const [ state, setState ] = useState({
         text: ''
