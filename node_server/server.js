@@ -8,7 +8,9 @@ const WebSocket = require("ws");
 
 const wss = new WebSocket.Server({ noServer: true, clientTracking: true });
 wss.on("connection", socket => {
+	console.log(socket)
 	socket.on('message', function incoming(message) {
+		console.log(message)
 		wss.clients.forEach( function each(client) {
 			if(client.readyState === WebSocket.OPEN) {
 				client.send(message)
@@ -34,8 +36,9 @@ let server = app.listen(PORT, () => {
 	console.log(`Server is running on ${PORT}`)
 });
 
-
 server.on('upgrade', (req, socket, head) => {
+	console.log('upgrade', socket)
+	// console.log()
 	wss.handleUpgrade(req, socket, head, socket => {
 		wss.emit('connection', socket, req);
 	})
