@@ -6,9 +6,9 @@ const cookies = require("cookie-parser");
 const path = require("path");
 const WebSocket = require("ws");
 
-const wss = new WebSocket.Server({ noServer: true, clientTracking: true });
+const WebSocketServer = WebSocket.Server,
+	wss = new WebSocketServer({ noServer: true, clientTracking: true });
 wss.on("connection", socket => {
-	console.log(socket)
 	socket.on('message', function incoming(message) {
 		console.log(message)
 		wss.clients.forEach( function each(client) {
