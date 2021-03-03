@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const passport = require("passport");
 const cookies = require("cookie-parser");
 const path = require("path");
+const https = require("https");
 const http = require("http");
 const WebSocket = require("ws");
 
@@ -33,7 +34,7 @@ app.use(passport.initialize());
 app.use(cookies());
 app.use(router);
 
-let server = http.createServer(app);
+let server = process.env.NODE_ENV === 'production' ? https.createServer(app) : http.createServer(app);
 
 server.listen(PORT, () => {
 	console.log(`Server is running on ${PORT}`)
