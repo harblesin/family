@@ -9,7 +9,6 @@ class Feed extends Component {
 
     componentDidMount = () => {
         const ws = new WebSocket(`${process.env.REACT_APP_ENV === 'production' ? 'wss://pissbitch.club' : 'ws://localhost:8080'}`);
-        // const ws = new WebSocket('ws://192.168.1.3:8080');
         ws.onopen = () => {
             ws.onmessage = (ev) => {
                 let { user, text } = JSON.parse(ev.data);

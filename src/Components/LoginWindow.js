@@ -17,28 +17,18 @@ class LoginWindow extends Component {
     }
 
     onChange = event => {
-        console.log(event.target.name)
         this.setState({ [event.target.name]: event.target.value });
     }
 
     login = async (event) => {
         event.preventDefault();
 
-        console.log("what about here")
-
-
-        console.log(this.state.username);
-        console.log(this.state.password)
-
-
         if (this.state.username && this.state.password) {
-            console.log("really?")
             let userInfo = {
                 username: this.state.username,
                 password: this.state.password
             };
 
-            console.log("this is before the api call")
             API.loginUser(userInfo).then(result => {
                 if (result) {
                     this.setState({ loggingIn: false })
@@ -46,7 +36,6 @@ class LoginWindow extends Component {
                 if (result.data.success) {
                     this.props.history.push("/home");
                 }
-
             })
         }
 

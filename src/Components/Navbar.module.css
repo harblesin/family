@@ -1,0 +1,23 @@
+#navbarMain {
+    height: 70px!important;
+    width: 100%;
+    background-color: rgb(42, 42, 53)!important;
+    position: absolute;
+    border-bottom: 1px solid rgb(38, 12, 38);
+    box-shadow: 1px 1px 1px 3px;
+}
+
+#userSpan {
+    float: right;
+    margin-bottom: 35px;
+    padding: 30px;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#webHeader {
+    padding: 10px;
+    color: #FFFFFF;
+    text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #FF2D95 0px 0px 20px, #FF2D95 0px 0px 30px, #FF2D95 0px 0px 40px, #FF2D95 0px 0px 50px, #FF2D95 0px 0px 75px;
+    font-family: Comic Sans MS;
+}
