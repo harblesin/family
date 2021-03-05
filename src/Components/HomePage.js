@@ -4,6 +4,7 @@ import "./HomePage.css";
 import API from "../utils/userAPI";
 import Dashboard from "./Dashboard";
 import Navbar from "./Navbar";
+import Sidebar from "./Sidebar";
 import { withRouter } from "react-router-dom";
 
 class HomePage extends Component {
@@ -25,16 +26,17 @@ class HomePage extends Component {
 
 	render = () => {
 		return <div id="homepage-body">
-			{/* <Row>
-				<Col xs="12"> */}
-					<Navbar />
-				{/* </Col>
-			</Row> */}
-			{/* <Row>
-				<Col xs={{ span: 12 }}> */}
+			<Navbar />
+			<Row>
+				<Col xs={{ span: 3 }}>
+					<Sidebar />
+				</Col>
+				{/* <Col xs={{span: 1}}>
+				</Col> */}
+				<Col xs={{ span: 9 }}>
 					<Dashboard user={this.state.user} />
-				{/* </Col>
-			</Row> */}
+				</Col>
+			</Row>
 		</div>
 	}
 

@@ -1,0 +1,11 @@
+#sidebarMain {
+    color: white!important;
+    background-color: rgb(37, 29, 38)!important;
+    width: 100%;
+    height: 100%;
+    margin-top: 70px;
+}
+
+.sideBarLink {
+    margin-bottom: 20px;
+}
