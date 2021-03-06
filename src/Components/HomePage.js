@@ -5,7 +5,9 @@ import API from "../utils/userAPI";
 import Dashboard from "./Dashboard";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
-import { withRouter } from "react-router-dom";
+import General from "./General";
+import Fun from "./Fun";
+import { withRouter, BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 class HomePage extends Component {
 
@@ -31,10 +33,15 @@ class HomePage extends Component {
 				<Col xs={{ span: 3 }}>
 					<Sidebar />
 				</Col>
-				{/* <Col xs={{span: 1}}>
-				</Col> */}
 				<Col xs={{ span: 9 }}>
-					<Dashboard user={this.state.user} />
+					<Router>
+						<Switch>
+							<Route exact path="/home" render={(props) => ( <Dashboard user={this.state.user} /> )}/>
+							<Route exact path="/general" component={General} />
+							<Route exact path="fun" component={Fun} />
+						</Switch>
+					</Router>
+					{/* <Dashboard user={this.state.user} /> */}
 				</Col>
 			</Row>
 		</div>
