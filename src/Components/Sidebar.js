@@ -5,8 +5,9 @@ import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 const Sidebar = (props) => {
     return (
         <div id={styles.sidebarMain}>
-            <Link to="/general"><p className={styles.sideBarLink}>General</p></Link>
-            <Link to="/fun"><p className={styles.sideBarLink}>Fun</p></Link>
+            <Link to="/home"><p className={styles.sideBarLink}>Home</p></Link>
+            <Link to="/f"><p className={styles.sideBarLink}>Forum</p></Link>
+            {/* <Link to="/f/fun"><p className={styles.sideBarLink}>Fun</p></Link> */}
         </div>
     )
 }

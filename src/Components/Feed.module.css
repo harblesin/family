@@ -1,10 +1,12 @@
 .div {
-    height: 400px;
-    justify-content: space-around;
+    /* height: 400px; */
+    /* justify-content: space-around; */
     background-color: rgb(65, 60, 60);
-    border: 2px inset palevioletred;
+    /* border: 2px inset palevioletred; */
     border-radius: 5px;
     overflow: auto;
+    /* width: 100px; */
+    /* height: 20px; */
 }
 
 .message {
@@ -24,4 +26,40 @@
     color:palevioletred;
     float: left;
     margin-top: 3px;
+}
+
+.post { 
+    /* width: 100%; */
+    height: 150px;  
+    background-color: green;
+    margin: 20px;
+    padding-left: 100px;
+    position: relative;
+    white-space: pre-line;
+}
+
+.postMenu {
+    margin-top: 70px;
+    border: 1px solid black;
+    padding: 20px;
+}
+
+.postImage {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100px;
+    height: 100px;
+}
+
+.postUser {
+    float: left;
+    margin-right: 10px;
+    padding: 10px;
+}
+
+.postBody {
+    white-space: pre-wrap;
+    text-align: left;
+    padding: 10px;
 }

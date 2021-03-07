@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { withRouter, BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css';
 import HomePage from "./Components/HomePage";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
+import Forum from "./Pages/Forum";
+import Sidebar from './Components/Sidebar';
 
 class App extends Component {
 
@@ -14,13 +16,10 @@ class App extends Component {
   render = () => {
     return (
       <div className="App">
-        {/* <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h4>Welcome You Stupid Cunt</h4>
-        </header> */}
         <Router>
           <Switch>
             <Route exact path="/home" component={HomePage} />
+            <Route exact path="/f" component={Forum} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/" component={Login} />
           </Switch>
@@ -31,4 +30,4 @@ class App extends Component {
 
 }
 
-export default App;
+export default (App);

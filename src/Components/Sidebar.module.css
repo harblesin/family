@@ -1,9 +1,12 @@
 #sidebarMain {
     color: white!important;
     background-color: rgb(37, 29, 38)!important;
-    width: 100%;
+    width: 200px;
     height: 100%;
     margin-top: 70px;
+    position: absolute;
+    left: 0!important;
+    margin-left: 0px!important;
 }
 
 .sideBarLink {

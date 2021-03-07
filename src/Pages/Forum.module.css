@@ -1,0 +1,7 @@
+#forumMain {
+    background-color: #24292e;
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	position: relative;
+}

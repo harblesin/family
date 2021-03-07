@@ -2,7 +2,7 @@ import React from "react";
 import { Row, Col } from "react-bootstrap";
 import "./Dashboard.css"
 import InputMenu from "./InputMenu";
-import Feed from "./Feed";
+import Chat from "./Chat";
 
 
 
@@ -14,7 +14,7 @@ const Dashboard = (props) => {
         <h3 id="welcomeHeader">Welcome you stupid whore :)</h3>
         <Row>
             <Col xs={{ span: 12 }}>
-                <Feed />                
+                <Chat />                
             </Col>
         </Row>
 

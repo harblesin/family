@@ -29,19 +29,17 @@ class HomePage extends Component {
 	render = () => {
 		return <div id="homepage-body">
 			<Navbar />
+			<Sidebar />
 			<Row>
 				<Col xs={{ span: 3 }}>
-					<Sidebar />
+					
 				</Col>
 				<Col xs={{ span: 9 }}>
 					<Router>
 						<Switch>
 							<Route exact path="/home" render={(props) => ( <Dashboard user={this.state.user} /> )}/>
-							<Route exact path="/general" component={General} />
-							<Route exact path="fun" component={Fun} />
 						</Switch>
 					</Router>
-					{/* <Dashboard user={this.state.user} /> */}
 				</Col>
 			</Row>
 		</div>
