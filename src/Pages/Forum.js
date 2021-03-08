@@ -30,11 +30,11 @@ class Forum extends Component {
             <Sidebar />
             <Router>
                 <Switch>
-                    <Row>
-                        <Col xs={{spam: 9, offset: 3}}>
+                    {/* <Row> */}
+                        {/* <Col xs={{spam: 12 }}> */}
                             <Route exact path="/f" render={(props) => ( <Feed /> )} />
-                        </Col>
-                    </Row>
+                        {/* </Col/> */}
+                    {/* </Row> */}
                 </Switch>
             </Router>
 		</div>

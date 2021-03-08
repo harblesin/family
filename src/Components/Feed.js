@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import styles from "./Feed.module.css";
 import Form from "../Components/Inputs"
-import alt from "../Images/download.png";
+import Post from "../Components/Post";
 
 class Feed extends Component {
 
@@ -33,23 +33,17 @@ class Feed extends Component {
             <div id="feed" className={styles.div}>
                 <Row className={styles.postMenu}>
                     <Col xs={{span : 9}}>
-                        <Form.TextInput label="Status" />
+                        <Form.TextArea label="Status" />
                     </Col>
                     <Col xs={{span: 3}}>
                         <Form.Button label="Post" />
                     </Col>
                 </Row>
-                <Row>
+                {/* <Row> */}
                     {this.state.posts.map( p => (
-                        <Col xs={{span: 12}}>
-                            <div className={styles.post}>
-                                <img src={p.image ? p.image : alt} className={styles.postImage} />
-                                <p className={styles.postUser}>{p.user}:</p>
-                                <p className={styles.postBody}>{p.body}</p>
-                            </div>
-                        </Col>
+                        <Post user={p.user} body={p.body} image={p.image} timestamp={p.timestamp} />
                     ))}
-                </Row>
+                {/* </Row> */}
             </div>               
         )      
     }
