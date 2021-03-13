@@ -14,7 +14,9 @@ const Post = (props) => {
                     <img src={props.image ? props.image : alt} className={styles.postImage} />
                     <p className={styles.postUser}>{props.user}</p>
                     <p className={styles.postTimestamp}>{props.timestamp}</p>
-                    <p className={styles.postBody}>{props.body}</p>
+                    <div className={styles.postBodySection}>
+                        <p className={styles.postBody}>{props.body}</p>
+                    </div>
                 </div>
             </Col>
         </div>

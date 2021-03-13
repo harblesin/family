@@ -6,6 +6,7 @@
     padding-left: 100px;
     position: relative;
     white-space: pre-line;
+    display: flex;
 }
 
 .postMenu {
@@ -20,26 +21,37 @@
     left: 0px;
     top: 0px;
     /* width: 1600px!important; */
-    /* height: 2500px; */
+    height: 150px;
 }
 
 .postUser {
-    float: left;
+    /* float: left; */
     margin-right: 10px;
     padding: 5px;
     position: absolute;
     top: 0;
-    left: 100;
+    left: 150px;
 }
 
 .postBody {
+    /* position: absolute;
+    top: 0;
+    left: 150px;
     white-space: pre-wrap;
     text-align: left;
     padding-top: 25px;
-    padding-left: 5px;
+    padding-left: 5px; */
     /* float: left; */
     /* padding: 25px; */
 
+}
+
+.postBodySection {
+    background-color: red!important;
+    position: absolute;
+    left: 155px;
+    top: 30px;
+    width: max-content
 }
 
 .postTimestamp {
