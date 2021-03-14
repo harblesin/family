@@ -3,6 +3,7 @@ import { Col, Row } from 'react-bootstrap';
 import styles from "./Feed.module.css";
 import Form from "../Components/Inputs"
 import Post from "../Components/Post";
+import PostMenu from '../Components/PostMenu';
 
 class Feed extends Component {
 
@@ -31,21 +32,12 @@ class Feed extends Component {
     render = () => {
         return (
             <div id="feed" className={styles.div}>
-                <Row className={styles.postMenu}>
-                    <Col xs={{span : 9}}>
-                        <Form.TextArea label="Status" />
-                    </Col>
-                    <Col xs={{span: 3}}>
-                        <Form.Button label="Post" />
-                    </Col>
-                </Row>
-                {/* <Row> */}
-                    {this.state.posts.map( p => (
-                        <Post user={p.user} body={p.body} image={p.image} timestamp={p.timestamp} />
-                    ))}
-                {/* </Row> */}
-            </div>               
-        )      
+                <PostMenu />
+                {this.state.posts.map(p => (
+                    <Post user={p.user} body={p.body} image={p.image} timestamp={p.timestamp} />
+                ))}
+            </div>
+        )
     }
 
 }

@@ -1,0 +1,11 @@
+.div {
+    background-color: rgb(128, 127, 127);
+    border-radius: 5px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.input {
+    background-color: rgb(152, 152, 152);
+    border-radius: 5px;
+}

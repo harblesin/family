@@ -8,12 +8,6 @@
     display: flex;
 }
 
-.postMenu {
-    margin-top: 70px;
-    border: 1px solid rgb(194, 8, 8)!important;
-    padding: 80px!important;
-}
-
 .postImage {
     position: absolute;
     padding: 5px;
