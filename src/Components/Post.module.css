@@ -1,5 +1,4 @@
 .post { 
-    /* width: 100vw; */
     height: 150px;  
     background-color: green;
     margin: 20px;
@@ -11,8 +10,8 @@
 
 .postMenu {
     margin-top: 70px;
-    border: 1px solid black;
-    padding: 20px;
+    border: 1px solid rgb(194, 8, 8)!important;
+    padding: 80px!important;
 }
 
 .postImage {
@@ -20,12 +19,10 @@
     padding: 5px;
     left: 0px;
     top: 0px;
-    /* width: 1600px!important; */
     height: 150px;
 }
 
 .postUser {
-    /* float: left; */
     margin-right: 10px;
     padding: 5px;
     position: absolute;
@@ -34,24 +31,15 @@
 }
 
 .postBody {
-    /* position: absolute;
-    top: 0;
-    left: 150px;
-    white-space: pre-wrap;
+    width: 100%;
     text-align: left;
-    padding-top: 25px;
-    padding-left: 5px; */
-    /* float: left; */
-    /* padding: 25px; */
-
+    padding-left: 5px;
 }
 
 .postBodySection {
-    background-color: red!important;
-    position: absolute;
-    left: 155px;
-    top: 30px;
-    width: max-content
+    width: 100%;
+    padding: 0px!important;
+    margin: 30px 0px 5px 50px!important;
 }
 
 .postTimestamp {
