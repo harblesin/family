@@ -78,6 +78,7 @@ class LoginWindow extends Component {
                                     <h4 id="login-window-header">Who Are You?</h4>
                                 </Col>
                             </Row>
+                            <form onSubmit={this.login} >
                             <Row>
                                 <Col xs={{ span: 12 }} md={{ span: 6, offset: 3 }}>
                                     <Form.TextInput label="Username" name="username" value={this.state.username} onChange={this.onChange} />
@@ -88,7 +89,6 @@ class LoginWindow extends Component {
                                     <Form.Password label="Password" name="password" value={this.state.password} onChange={this.onChange} />
                                 </Col>
                             </Row>
-                            <form onSubmit={this.login} >
                                 <Row>
                                     <Col xs={{ span: 12 }} md={{ span: 3, offset: 3 }}>
                                         <Form.Button label="Login" onClick={this.login} />

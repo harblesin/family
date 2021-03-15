@@ -6,6 +6,7 @@ const db = require("../config/mysql");
 const userQueries = require("../Queries/userQueries");
 const key = require("../config/key");
 const toUnnamed = require("named-placeholders")();
+const formidable = require("formidable");
 const SALT = 12;
 // const WebSocket = require("ws");
 // const wss = new WebSocket.Server({ noServer: true, clientTracking: true });
@@ -162,5 +163,21 @@ module.exports = {
 // 	// socket.send('heres your message' + message)
 // })
 //         })(req, res, next)
+    },
+    upload: (req, res) => {
+
+        // console.log(req)
+
+        let formData = formidable({ multiples: false });
+
+        formData.parse(req, (err, fields, files) => {
+            console.log('fields', fields.newFile);
+            // console.log('fiels', files)
+        })
+
+        // console.log(req.body.fields)
+        // console.log(req.files)
+
+        res.end();
     }
 }

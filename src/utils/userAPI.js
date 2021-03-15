@@ -18,5 +18,12 @@ export default  {
     },
     getStatus: () => {
         return axios.get("/api/user/status");
+    },
+    upload: (file) => {
+        return axios.post("/api/user/upload", file, {
+        headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        });
     }
 }
