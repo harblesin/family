@@ -22,7 +22,21 @@ const PostMenu = (props) => {
         // file.append('file', e.target.files[0]);
 
         // console.log(file.entries())
+
+
+        console.log("HET DUDE WHATS UP")
+
+
+
         let file = e.target.files[0];
+
+        // let fun = new FormData();
+
+        // fun.append('newFile', e.target.files);
+
+        // API.upload()
+
+
         setFile({ file });
     }
 
@@ -32,15 +46,12 @@ const PostMenu = (props) => {
         let uploadFile = new FormData();
 
 
-        // uploadFile.append("fart", "piss");
+        // console.log(file)
 
-        // console.log(uploadFile.entries())
 
-        // console.log(file.file)
+
 
         uploadFile.append('newFile', file);
-
-        // console.log(uploadFile)
 
         API.upload( uploadFile );
 

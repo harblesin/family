@@ -20,9 +20,13 @@ export default  {
         return axios.get("/api/user/status");
     },
     upload: (file) => {
+        // const multer = require("multer");
+        // console.log(__dirname + 'images/')
+        // const upload = multer({ dest: __dirname+ '/images/' });
         return axios.post("/api/user/upload", file, {
         headers: {
-            'Content-Type': 'multipart/form-data'
+            'Content-Type': 'multipart/form-data',
+            'Accept': 'image/*'
           }
         });
     }

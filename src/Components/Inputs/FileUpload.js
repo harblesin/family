@@ -4,7 +4,7 @@ import styles from './FileUpload.module.css';
 const FileUpload = props => {
     return (
         <div className={styles.div}>
-            <input className={styles.input} type="file" name={props.name} onChange={props.onChange} enctype="multipart/form-data" />
+            <input className={styles.input} type="file" name={props.name} onChange={props.onChange} accept="image/*" enctype="multipart/form-data" />
         </div>
     )
 }
