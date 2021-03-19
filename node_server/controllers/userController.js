@@ -7,6 +7,9 @@ const userQueries = require("../Queries/userQueries");
 const key = require("../config/key");
 const toUnnamed = require("named-placeholders")();
 const SALT = 12;
+const multer = require("multer");
+
+const formidable = require("formidable");
 // const WebSocket = require("ws");
 // const wss = new WebSocket.Server({ noServer: true, clientTracking: true });
 
@@ -163,12 +166,42 @@ module.exports = {
 // })
 //         })(req, res, next)
     },
-    upload: (req, res) => {
+    upload: ( req, res, next) => {
 
-        console.log(req.file)
 
-        console.log(req.body.newFile)
+
+        console.log(req.body.file);
+        let newThing = new Img;
+
+        newThing.img.data = fs.readFileSync(req.file.path);
+
+        
+
+        console.log("hello?")
+
+        passport.authenticate('jwt', { sessions: false }, ( err, user, info) => {
+
+
+
+
+
+
+
+            // let form = new formidable.IncomingForm();
+            // form.parse(req, function (err, fields, files) {
+            //     console.log('req ===', req)
+            //     console.log('files ==== ', files);
+            //     console.log('fields ==== ', fields);
+            //     res.end("ueaj")
+            // });
+
+            
+            console.log("what");
+            console.log(JSON.parse(req.body.file))
+            console.log(req.file);
+            console.log(req.file)
 
         res.end();
+    })(req, res, next)
     }
 }

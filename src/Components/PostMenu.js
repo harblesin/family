@@ -45,15 +45,17 @@ const PostMenu = (props) => {
 
         let uploadFile = new FormData();
 
+        // uploadFile.append(file)
+
 
         // console.log(file)
 
 
 
 
-        uploadFile.append('newFile', file);
+        uploadFile.append('file', file);
 
-        API.upload( uploadFile );
+        API.upload( (uploadFile) );
 
     }
 

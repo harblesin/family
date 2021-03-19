@@ -5,6 +5,7 @@ const passport = require("passport");
 const cookies = require("cookie-parser");
 const path = require("path");
 const WebSocket = require("ws");
+const multer = require("multer");
 
 const WebSocketServer = WebSocket.Server,
 	wss = new WebSocketServer({ noServer: true, clientTracking: true });
@@ -26,6 +27,7 @@ require("./config/authSetup.js")(passport);
 app.use(express.static(path.join(__dirname, "../build/")));
 app.use(bodyParser.urlencoded({ extended: true, limit: '1mb' }));
 app.use(bodyParser.json({ limit: '1mb' }));
+// app.use(multer);
 app.use(passport.initialize());
 app.use(cookies());
 app.use(router);
