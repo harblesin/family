@@ -9,11 +9,11 @@ const toUnnamed = require("named-placeholders")();
 const SALT = 12;
 const multer = require('multer');
 const storage = multer.diskStorage({
-  destination: function(req, file, callback) {
-    callback(null, __dirname + '../farts');
-  }
-});
-const upload2 = multer({ storage: storage });
+    destination: function(req, file, callback) {
+      callback(null, __dirname);
+    }
+  });
+  const upload = multer({ storage: storage });
 
 const formidable = require("formidable");
 // const WebSocket = require("ws");
@@ -174,8 +174,6 @@ module.exports = {
     },
     upload: ( req, res, next) => {
 
-        console.log(req.body.file);
-
         console.log(req.file)
         // let newThing = new Img;
 
@@ -185,16 +183,20 @@ module.exports = {
 
         console.log("hello?")
 
-        passport.authenticate('jwt', { sessions: false }, ( err, user, info) => {
+        // passport.authenticate('jwt', { sessions: false }, ( err, user, info) => {
+
+            // upload.any( (req, res) => {
+            //     console.log(req.file)
+            // });
 
             console.log(__dirname)
             
 
 
-            upload2.single('newFile', (req, res) => {
-                console.log(req);
-                console.log(req.file)
-            })
+            // upload2.single('newFile', (req, res) => {
+            //     console.log(req);
+            //     console.log(req.file)
+            // })
 
 
 
@@ -214,6 +216,6 @@ module.exports = {
             // console.log(req.file)
 
         res.end();
-    })(req, res, next)
+    // })(req, res, next)
     }
 }
