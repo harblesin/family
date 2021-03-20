@@ -27,7 +27,7 @@ export default  {
         return axios.post("/api/user/upload", file
         // , {
         // headers: {
-        //     'Content-Type': 'multipart/form-data ;boundary=$boundary'
+        //     'Content-Type': 'multipart/form-data; boundary=----WebKitFormBoundarydMIgtiA2YeB1Z0kl'
         //   }
         // }
         );

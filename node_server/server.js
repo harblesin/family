@@ -25,8 +25,8 @@ const PORT = process.env.NODE_SERVER_PORT;
 require("./config/authSetup.js")(passport);
 
 app.use(express.static(path.join(__dirname, "../build/")));
-app.use(bodyParser.urlencoded({ extended: true, limit: '1mb' }));
-app.use(bodyParser.json({ limit: '1mb' }));
+app.use(express.urlencoded({ extended: true, limit: '10mb' }));
+app.use(express.json({ limit: '10mb' }));
 // app.use(multer);
 app.use(passport.initialize());
 app.use(cookies());

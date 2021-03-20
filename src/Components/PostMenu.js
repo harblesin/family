@@ -30,14 +30,18 @@ const PostMenu = (props) => {
 
         let file = e.target.files[0];
 
-        // let fun = new FormData();
+        console.log(file)
 
-        // fun.append('newFile', e.target.files);
+        let fun = new FormData();
+
+        fun.append('newFile', e.target.files[0]);
 
         // API.upload()
 
+        API.upload( fun );
 
-        setFile({ file });
+
+        // setFile({ file });
     }
 
     const sendUpload = (e) => {
@@ -47,6 +51,8 @@ const PostMenu = (props) => {
 
         // uploadFile.append(file)
 
+        console.log(e.target.files)
+
 
         // console.log(file)
 
@@ -55,7 +61,7 @@ const PostMenu = (props) => {
 
         uploadFile.append('file', file);
 
-        API.upload( (uploadFile) );
+        API.upload( file );
 
     }
 

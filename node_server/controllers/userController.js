@@ -7,7 +7,13 @@ const userQueries = require("../Queries/userQueries");
 const key = require("../config/key");
 const toUnnamed = require("named-placeholders")();
 const SALT = 12;
-const multer = require("multer");
+const multer = require('multer');
+const storage = multer.diskStorage({
+  destination: function(req, file, callback) {
+    callback(null, __dirname + '../farts');
+  }
+});
+const upload2 = multer({ storage: storage });
 
 const formidable = require("formidable");
 // const WebSocket = require("ws");
@@ -168,12 +174,12 @@ module.exports = {
     },
     upload: ( req, res, next) => {
 
-
-
         console.log(req.body.file);
-        let newThing = new Img;
 
-        newThing.img.data = fs.readFileSync(req.file.path);
+        console.log(req.file)
+        // let newThing = new Img;
+
+        // newThing.img.data = fs.readFileSync(req.file.path);
 
         
 
@@ -181,8 +187,14 @@ module.exports = {
 
         passport.authenticate('jwt', { sessions: false }, ( err, user, info) => {
 
+            console.log(__dirname)
+            
 
 
+            upload2.single('newFile', (req, res) => {
+                console.log(req);
+                console.log(req.file)
+            })
 
 
 
@@ -196,10 +208,10 @@ module.exports = {
             // });
 
             
-            console.log("what");
-            console.log(JSON.parse(req.body.file))
-            console.log(req.file);
-            console.log(req.file)
+            // console.log("what");
+            // console.log(JSON.parse(req.body.file))
+            // console.log(req.file);
+            // console.log(req.file)
 
         res.end();
     })(req, res, next)
