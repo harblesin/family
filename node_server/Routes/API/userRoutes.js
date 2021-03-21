@@ -6,8 +6,9 @@ const userController = require("../../controllers/userController");
 const multer = require('multer');
 const storage = multer.diskStorage({
   destination: function(req, file, callback) {
-    callback(null, __dirname);
+    callback(null, __dirname+'../../../../public/images');
   },
+  
   filename: (req, file, cb) => {
       cb(null, Date.now() + '-' + file.originalname)
   }
@@ -28,6 +29,8 @@ router.route("/status").get(userController.getStatus);
 
 router.route("/message").post(userController.sendMessage);
 
-router.route("/upload").post( passport.authenticate("jwt", { session: false}), upload.any(), userController.upload);
+router.route("/posts").get(userController.getPosts);
+
+router.route("/upload").post( upload.any(), userController.upload);
 
 module.exports = router;

@@ -19,6 +19,9 @@ export default  {
     getStatus: () => {
         return axios.get("/api/user/status");
     },
+    getPosts: () => {
+        return axios.get("/api/user/posts");
+    },
     upload: (file) => {
         // console.log(Cookies);
         // const multer = require("multer");

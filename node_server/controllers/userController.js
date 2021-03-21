@@ -172,50 +172,28 @@ module.exports = {
 // })
 //         })(req, res, next)
     },
+    getPosts: (req, res) => {
+        db.query(userQueries.getPosts, (err, result) => {
+            // console.log(result)
+            res.json(result)
+        })
+    },
     upload: ( req, res, next) => {
 
-        console.log(req.file)
-        // let newThing = new Img;
+        console.log(req.body.filename);
+        console.log(req.body.status)
 
-        // newThing.img.data = fs.readFileSync(req.file.path);
+        let { status, filename } = req.body;
 
-        
+        let q = toUnnamed(userQueries.postStatus, { status, filename });
 
-        console.log("hello?")
+        db.query(q[0], q[1], (err, result) => {
+            if(err){
+                console.log(err)
+                res.json(err)
+            }
 
-        // passport.authenticate('jwt', { sessions: false }, ( err, user, info) => {
-
-            // upload.any( (req, res) => {
-            //     console.log(req.file)
-            // });
-
-            console.log(__dirname)
-            
-
-
-            // upload2.single('newFile', (req, res) => {
-            //     console.log(req);
-            //     console.log(req.file)
-            // })
-
-
-
-
-            // let form = new formidable.IncomingForm();
-            // form.parse(req, function (err, fields, files) {
-            //     console.log('req ===', req)
-            //     console.log('files ==== ', files);
-            //     console.log('fields ==== ', fields);
-            //     res.end("ueaj")
-            // });
-
-            
-            // console.log("what");
-            // console.log(JSON.parse(req.body.file))
-            // console.log(req.file);
-            // console.log(req.file)
-
-        res.end();
-    // })(req, res, next)
+            res.json(result)
+        })
     }
 }

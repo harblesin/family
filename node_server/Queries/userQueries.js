@@ -38,5 +38,26 @@ module.exports = {
         *
         FROM status
         WHERE user_id = :userId
+    `,
+    getPosts: `
+        SELECT      
+        s.user_id AS userId,
+        u.username AS username,
+        s.image AS image,
+        s.status AS status,
+        s.board AS board,
+        DATE_FORMAT(s.time, "%m/%d/%y %h:%i") AS time
+        FROM status s
+        INNER JOIN user u
+        ON u.id = s.user_id
+        WHERE s.board = "general";
+    `,
+    postStatus: `
+        INSERT INTO 
+        status
+        (user_id, image, status, board, time)
+        VALUES (
+            28, :filename, :status, 'general', CURRENT_TIMESTAMP()
+        );
     `
 };

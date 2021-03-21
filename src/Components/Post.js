@@ -11,7 +11,7 @@ const Post = (props) => {
         <div>
             <Col xs={{ span: 12 }}>
                 <div className={styles.post}>
-                    <img src={props.image ? props.image : alt} className={styles.postImage} />
+                    <img src={props.image ? `http://localhost:8080/images/${props.image}` : alt} className={styles.postImage} />
                     <p className={styles.postUser}>{props.user}</p>
                     <p className={styles.postTimestamp}>{props.timestamp}</p>
                     <div className={styles.postBodySection}>
