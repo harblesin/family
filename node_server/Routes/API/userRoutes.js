@@ -6,7 +6,7 @@ const userController = require("../../controllers/userController");
 const multer = require('multer');
 const storage = multer.diskStorage({
   destination: function(req, file, callback) {
-    callback(null, process.env.NODE_ENV === "production" ? __dirname+"../../../../../../srv/post_images" : __dirname+'../../../../../../post_images');
+    callback(null, process.env.NODE_ENV === "production" ? __dirname+"../../../../../../../srv/post_images" : __dirname+'../../../../../../post_images');
   },
   filename: (req, file, cb) => {
     console.log(req.files)
