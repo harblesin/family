@@ -26,38 +26,39 @@ module.exports = {
             :email, :username, :password
         );
     `,
-    postStatus: `
-        INSERT INTO status (
-            user_id, status, image
+    createPostNoImage: `
+        INSERT INTO post (
+            user_id, post_body, image, board, datetime_created
         ) VALUES (
-            :user, :status, :image
+            :user, :postBody, NULL, 'general', CURRENT_TIMESTAMP()
         )
     `,
     getStatus: `
         SELECT
         *
-        FROM status
+        FROM post
         WHERE user_id = :userId
     `,
     getPosts: `
         SELECT      
-        s.user_id AS userId,
+        p.user_id AS userId,
         u.username AS username,
-        s.image AS image,
-        s.status AS status,
-        s.board AS board,
-        DATE_FORMAT(s.time, "%m/%d/%y %h:%i") AS time
-        FROM status s
+        p.image AS image,
+        p.post_body AS body,
+        p.board AS board,
+        DATE_FORMAT(p.datetime_created, "%m/%d/%y %h:%i") AS time
+        FROM post p
         INNER JOIN user u
-        ON u.id = s.user_id
-        WHERE s.board = "general";
+        ON u.id = p.user_id
+        WHERE p.board = "general"
+        ORDER BY p.id DESC;
     `,
-    postStatus: `
+    createPost: `
         INSERT INTO 
-        status
-        (user_id, image, status, board, time)
+        post
+        (user_id, image, post_body, board, datetime_created)
         VALUES (
-            28, :filename, :status, 'general', CURRENT_TIMESTAMP()
+            28, :filename, :postBody, 'general', CURRENT_TIMESTAMP()
         );
     `
 };

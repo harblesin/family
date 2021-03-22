@@ -7,20 +7,6 @@ const userQueries = require("../Queries/userQueries");
 const key = require("../config/key");
 const toUnnamed = require("named-placeholders")();
 const SALT = 12;
-const multer = require('multer');
-const storage = multer.diskStorage({
-    destination: function(req, file, callback) {
-      callback(null, __dirname);
-    }
-  });
-  const upload = multer({ storage: storage });
-
-const formidable = require("formidable");
-// const WebSocket = require("ws");
-// const wss = new WebSocket.Server({ noServer: true, clientTracking: true });
-
-// const ws = require("ws");
-// const client = new ws("ws://localhost:8080");
 
 module.exports = {
     loginUser: (req, res, next) => {
@@ -48,14 +34,6 @@ module.exports = {
                 });
             }
         })(req, res, next);
-
-
-
-        // let q = toUnnamed(userQueries.loginUser, { username: req.body.username, password: req.body.password });
-        // db.query(q[0], q[1], (err, result) => {
-        //     if( err ) { return res.json(err)};
-        //     res.json(result.length ? true : false)
-        // });
     },
 
     signUp: async (req, res) => {
@@ -105,94 +83,44 @@ module.exports = {
         })
 
     },
-    postStatus: (req, res, next) => {
+    createPost: (req, res, next) => {
 
         passport.authenticate('jwt', { sessions: false }, ( err, user, info) => {
 
-            let q = toUnnamed(userQueries.postStatus, { status: req.body.status, user: user.id });
+            console.log(req.body)
+
+            let q = toUnnamed(userQueries.createPostNoImage, { postBody: req.body.postBody, user: user.id });
 
             db.query(q[0], q[1], (err, result) => {
                 if(err) { return res.json(err)}
                 res.json({ success: "Piss!" });
             })
-
         })(req, res, next);
     },
     getStatus: (req, res, next) => {
 
 
-        console.log("yeah")
-
-        // client.on("open", () => {
-        //     client.send("Hello")
-        // })
-
-
         res.json()
 
-
-
-
-        // passport.authenticate('jwt', { sessions: false }, ( err, user, info) => {
-
-        //     let q = toUnnamed(userQueries.getStatus, {userId: user.id });
-
-        //     console.log("he")
-
-        //     db.query(q[0], q[1], (err, result) => {
-        //         console.log(err)
-        //         if(err) { return res.json(err) };
-
-
-        //         console.log(result)
-        //         res.json(result);
-        //     })
-        // })(req, res, next)
     },
     sendMessage: (req, res, next) => {
-//         passport.authenticate('jwt', {session: false }, (err, user, info) => {
-//             wss.on("connection", socket => {
-//                 socket.on('message', function incoming(message) {
 
-
-//                     wss.clients.forEach( function each(client) {
-//                         console.log(client)
-//                         if(client.readyState === WebSocket.OPEN) {
-//                             client.send(message)
-//                         }
-//                     })
-
-
-//                     res.json()
-//                     console.log("message", message);
-// 		// console.log(socket)
-// 		// socket.emit('heres your message'+message)
-// 	});
-// 	// socket.send('heres your message' + message)
-// })
-//         })(req, res, next)
     },
     getPosts: (req, res) => {
         db.query(userQueries.getPosts, (err, result) => {
-            // console.log(result)
             res.json(result)
         })
     },
     upload: ( req, res, next) => {
 
-        console.log(req.body.filename);
-        console.log(req.body.status)
+        let { postBody } = req.body;
 
-        let { status, filename } = req.body;
-
-        let q = toUnnamed(userQueries.postStatus, { status, filename });
+        let q = toUnnamed(userQueries.createPost, { postBody, filename: req.files[0].originalname });
 
         db.query(q[0], q[1], (err, result) => {
             if(err){
-                console.log(err)
                 res.json(err)
             }
-
             res.json(result)
         })
     }

@@ -1,11 +1,14 @@
 .post { 
     height: 150px;  
-    background-color: green;
+    background-color: rgb(60, 60, 63);
+    color: white;
     margin: 20px;
     padding-left: 100px;
     position: relative;
     white-space: pre-line;
     display: flex;
+    border-radius: 2px;
+    border: 1px solid grey;
 }
 
 .postImage {
@@ -15,6 +18,8 @@
     top: 0px;
     height: 150px;
     width: 150px;
+    border-radius: 0px;
+    cursor: pointer;
 }
 
 .postUser {

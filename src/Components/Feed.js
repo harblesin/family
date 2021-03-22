@@ -44,7 +44,7 @@ class Feed extends Component {
             <div id="feed" className={styles.div}>
                 <PostMenu refresh={this.getPosts} />
                 {this.state.posts.map(p => (
-                    <Post user={p.user} body={p.status} image={p.image} timestamp={p.time} />
+                    <Post user={p.username} body={p.body} image={p.image} timestamp={p.time} />
                 ))}
             </div>
         )

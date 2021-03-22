@@ -26,9 +26,14 @@ require("./config/authSetup.js")(passport);
 
 app.use(express.static(path.join(__dirname, "../build/")));
 app.use(express.static(path.join(__dirname, "../public/")));
+if(process.env.NODE_ENV === "production") {
+	app.use(express.static(path.join(__dirname+"../../../../../srv/")));
+} else {
+	app.use(express.static(path.join(__dirname+"../../../../../Desktop/")));
+}
+
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 app.use(express.json({ limit: '10mb' }));
-// app.use(multer);
 app.use(passport.initialize());
 app.use(cookies());
 app.use(router);

@@ -7,28 +7,29 @@ import API from "../utils/userAPI";
 const PostMenu = (props) => {
 
 
-    const [ status, setStatus] = useState();
+    const [ text, setText] = useState();
     const [ file, setFile ] = useState();
 
     const onChange = (e) => {
         let { name, value } = e.target;
-        setStatus({ [name]: value });
+        setText({ [name]: value });
     }
 
     const handleFile = (e) => {
         setFile(e.target.files[0]);
     }
 
-    const sendUpload = (e) => {
+    const sendUpload = async (e) => {
         e.preventDefault();
-        let uploadFile = new FormData();
-        uploadFile.append('file', file);
-        uploadFile.append('status', status.status);
-        // let newStatus = status.status;
-        let image = new Date().getTime() + `-` + file.name;
-        uploadFile.append('filename', image);
-        // console.log(new Date().getTime())
-        API.upload( uploadFile );
+        let post = new FormData();
+        if(file) {
+            post.append('postBody', text.text);
+            let imageName = new Date().getTime()+ `-` + file.name;        
+            post.append('file', file, imageName);    
+            await API.upload( post );    
+        } else {
+            await API.createPost( { postBody: text.text } )
+        }
         props.refresh();
     }
 
@@ -37,7 +38,7 @@ const PostMenu = (props) => {
             <form>
                 <Row>
                     <Col xs={{ span: 12 }}>
-                        <Form.TextArea label='status' name='status' onChange={onChange} />
+                        <Form.TextArea label='text' name='text' onChange={onChange} />
                     </Col>
                 </Row>
                 <Row>

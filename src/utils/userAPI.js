@@ -13,8 +13,8 @@ export default  {
     signUp: (userInfo) => {
         return axios.post("/api/user/signup", userInfo);
     },
-    postStatus: (status) => {
-        return axios.post("/api/user/status", status);
+    createPost: (post) => {
+        return axios.post("/api/user/post", post);
     },
     getStatus: () => {
         return axios.get("/api/user/status");
@@ -23,16 +23,6 @@ export default  {
         return axios.get("/api/user/posts");
     },
     upload: (file) => {
-        // console.log(Cookies);
-        // const multer = require("multer");
-        // console.log(__dirname + 'images/')
-        // const upload = multer({ dest: __dirname+ '/images/' });
-        return axios.post("/api/user/upload", file
-        // , {
-        // headers: {
-        //     'Content-Type': 'multipart/form-data; boundary=----WebKitFormBoundarydMIgtiA2YeB1Z0kl'
-        //   }
-        // }
-        );
+        return axios.post("/api/user/upload", file );
     }
 }
