@@ -58,7 +58,7 @@ module.exports = {
         post
         (user_id, image, post_body, board, datetime_created)
         VALUES (
-            28, :filename, :postBody, 'general', CURRENT_TIMESTAMP()
+            :user, :filename, :postBody, 'general', CURRENT_TIMESTAMP()
         );
     `
 };

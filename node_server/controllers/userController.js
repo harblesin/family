@@ -87,8 +87,6 @@ module.exports = {
 
         passport.authenticate('jwt', { sessions: false }, ( err, user, info) => {
 
-            console.log(req.body)
-
             let q = toUnnamed(userQueries.createPostNoImage, { postBody: req.body.postBody, user: user.id });
 
             db.query(q[0], q[1], (err, result) => {
@@ -113,15 +111,18 @@ module.exports = {
     },
     upload: ( req, res, next) => {
 
-        let { postBody } = req.body;
+        passport.authenticate('jwt', { sessions: false }, ( err, user, info) => {
 
-        let q = toUnnamed(userQueries.createPost, { postBody, filename: req.files[0].originalname });
+            let { postBody } = req.body;
 
-        db.query(q[0], q[1], (err, result) => {
-            if(err){
-                res.json(err)
-            }
-            res.json(result)
-        })
+            let q = toUnnamed(userQueries.createPost, { postBody, filename: req.files[0].originalname, user: user.id });
+
+            db.query(q[0], q[1], (err, result) => {
+                if(err){
+                    res.json(err)
+                }
+                res.json(result)
+            })
+        })(req, res, next);
     }
 }
