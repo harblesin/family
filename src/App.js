@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import { withRouter, BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css';
 import HomePage from "./Components/HomePage";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import Forum from "./Pages/Forum";
-import Sidebar from './Components/Sidebar';
 
 class App extends Component {
 

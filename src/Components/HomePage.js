@@ -5,8 +5,6 @@ import API from "../utils/userAPI";
 import Dashboard from "./Dashboard";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
-import General from "./General";
-import Fun from "./Fun";
 import { withRouter, BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 class HomePage extends Component {
