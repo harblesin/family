@@ -1,4 +1,4 @@
-import React, { Compoenent } from "react";
+import React from "react";
 import { Col } from 'react-bootstrap';
 import styles from './Post.module.css';
 import alt from "../Images/download.png";
@@ -14,6 +14,7 @@ const Post = (props) => {
         let win = window.open("about:blank");
         let image = new Image();
         image.src = `http://localhost:8080/post_images/${props.image}`;
+        image.alt = alt;
         win.document.write(image.outerHTML)
     }
 

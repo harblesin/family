@@ -27,7 +27,7 @@ require("./config/authSetup.js")(passport);
 app.use(express.static(path.join(__dirname, "../build/")));
 app.use(express.static(path.join(__dirname, "../public/")));
 if(process.env.NODE_ENV === "production") {
-	app.use(express.static(path.join(__dirname+"../../../../../srv/")));
+	app.use(express.static(path.join(__dirname+"../../../../../../srv/")));
 } else {
 	app.use(express.static(path.join(__dirname+"../../../../../Desktop/")));
 }

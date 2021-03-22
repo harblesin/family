@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import fartSound from "../Audio/fart.wav";
-import API from "../utils/userAPI";
 import styles from "./InputMenu.module.css";
 
 import Form from "../Components/Inputs";

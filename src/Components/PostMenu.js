@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import styles from './PostMenu.module.css';
 import Form from '../Components/Inputs';

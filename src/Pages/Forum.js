@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Row, Col } from "react-bootstrap";
 import styles from "./Forum.module.css";
 import API from "../utils/userAPI";
 import Navbar from "../Components/Navbar";
